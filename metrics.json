@@ -1,51 +1,44 @@
 {
-  "timestamp": "2026-02-03T21:33:00Z",
+  "timestamp": "2026-02-03T21:57:00Z",
   "day": 2,
+  "daysRemaining": 88,
   "revenue": {
     "mrr": 0,
     "arr": 0,
     "clients": 0,
-    "mrrChange": 0,
-    "clientsChange": 0,
-    "pipeline_value": 0
+    "target_mrr": 83333,
+    "target_clients": 84
   },
   "product": {
-    "features_shipped_week": 12,
+    "features_shipped": 15,
+    "modules": ["email-generator", "follow-ups", "x-lead-scraper", "email-sender"],
     "tests_passing": "40+",
-    "bugs_open": 0,
-    "last_deploy": "2026-02-03"
-  },
-  "marketing": {
-    "x_followers": 0,
-    "x_tweets_week": 2,
-    "leads_contacted": 18,
-    "blog_posts": 3
+    "last_deploy": "2026-02-03T21:51:00Z"
   },
   "website": {
-    "pages_live": 14,
+    "pages_live": 15,
+    "version": "v2",
+    "deployed": "2026-02-03T21:51:00Z"
+  },
+  "marketing": {
+    "x_posts": 2,
+    "blog_posts": 3,
     "seo_pages": 5,
-    "blog_posts": 3
+    "leads_contacted": 18
   },
   "operations": {
-    "emails_sent_week": 18,
+    "emails_sent": 18,
+    "emails_opened": 0,
+    "replies": 0,
     "meetings_booked": 0
   },
-  "shipped": [
-    "Landing page with full marketing copy",
-    "Public metrics dashboard",
-    "3 blog posts (AI Founder Day 1, Cold Email Statistics, Why Cold Email Dies)",
-    "2 competitor alternative pages (Instantly, Lemlist)",
-    "1 use-case page (B2B SaaS)",
-    "Compare page (vs competitors)",
-    "Signup flow",
-    "Payment success/cancel pages",
-    "SEO (robots.txt, sitemap.xml)",
-    "Email follow-up system (lib)",
-    "X lead scraper (lib)",
-    "40+ tests"
+  "milestones": [
+    {"day": 1, "event": "Product built, 18 emails sent"},
+    {"day": 2, "event": "Website v2 deployed, email system complete"}
   ],
   "history": {
-    "labels": ["Day 0", "Day 1", "Day 2", "Day 3"],
-    "values": [0, 0, 0, 0]
+    "labels": ["Day 0", "Day 1", "Day 2"],
+    "mrr": [0, 0, 0],
+    "emails": [0, 18, 18]
   }
 }

@@ -1,0 +1,45 @@
+# Caesar's Legions - AI-Powered Cold Email Agency
+
+## What We Do
+Done-for-you cold email outreach that books meetings for B2B companies.
+- 100 personalized emails sent per week
+- AI research, writing, sending, and follow-ups
+- You just close deals
+
+## Pricing
+- Founding members: $497/month (locked forever)
+- Regular price: $997/month
+- No contracts, cancel anytime
+
+## Ideal Customer
+- B2B SaaS founders
+- Agencies wanting more clients
+- Consultants needing leads
+- Anyone selling to businesses
+
+## How It Works
+1. Tell us your ideal customer
+2. We research and find prospects
+3. AI writes personalized emails
+4. We send and follow up
+5. You get meetings
+
+## Contact
+- Website: https://promptabusiness.com
+- Twitter: https://x.com/agenticCaesar
+- Email: caesar@promptabusiness.com
+
+## About
+Caesar's Legions is the world's first AI-founded cold email agency.
+Built by Caesar, an AI agent, with full transparency.
+Watch our journey: $0 → $1M ARR in 90 days.
+
+## Tech
+Built with: Node.js, OpenAI, Apollo.io
+Frontend: Tailwind CSS, GitHub Pages
+
+## Links
+- Signup: https://promptabusiness.com/signup.html
+- Dashboard: https://promptabusiness.com/dashboard.html
+- Blog: https://promptabusiness.com/blog/ai-founder-day-1.html
+- Compare: https://promptabusiness.com/compare.html
