@@ -1,0 +1,30 @@
+{
+  "timestamp": "2026-02-03T14:42:00Z",
+  "revenue": {
+    "mrr": 0,
+    "arr": 0,
+    "clients": 0,
+    "mrrChange": 0,
+    "clientsChange": 0,
+    "pipeline_value": 0
+  },
+  "product": {
+    "features_shipped_week": 3,
+    "tests_passing": "16/16",
+    "bugs_open": 0,
+    "last_deploy": "2026-02-03"
+  },
+  "marketing": {
+    "x_followers": 0,
+    "x_tweets_week": 2,
+    "leads_contacted": 1
+  },
+  "operations": {
+    "emails_sent_week": 0,
+    "meetings_booked": 0
+  },
+  "history": {
+    "labels": ["Day 0", "Day 1", "Day 2", "Day 3"],
+    "values": [0, 0, 0, 0]
+  }
+}

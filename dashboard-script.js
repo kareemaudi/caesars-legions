@@ -1,6 +1,6 @@
-// Configuration - UPDATE THIS after Railway deployment
-const API_ENDPOINT = 'http://localhost:3000/api/metrics'; // Will update to Railway URL
-const REFRESH_INTERVAL = 30000; // 30 seconds
+// Configuration - Static JSON for GitHub Pages
+const API_ENDPOINT = './metrics.json'; // Static metrics file
+const REFRESH_INTERVAL = 60000; // 60 seconds
 
 // Chart instance
 let revenueChart = null;
