@@ -1,5 +1,6 @@
 {
-  "timestamp": "2026-02-03T14:42:00Z",
+  "timestamp": "2026-02-03T21:33:00Z",
+  "day": 2,
   "revenue": {
     "mrr": 0,
     "arr": 0,
@@ -9,20 +10,40 @@
     "pipeline_value": 0
   },
   "product": {
-    "features_shipped_week": 3,
-    "tests_passing": "16/16",
+    "features_shipped_week": 12,
+    "tests_passing": "40+",
     "bugs_open": 0,
     "last_deploy": "2026-02-03"
   },
   "marketing": {
     "x_followers": 0,
     "x_tweets_week": 2,
-    "leads_contacted": 1
+    "leads_contacted": 18,
+    "blog_posts": 3
+  },
+  "website": {
+    "pages_live": 14,
+    "seo_pages": 5,
+    "blog_posts": 3
   },
   "operations": {
-    "emails_sent_week": 0,
+    "emails_sent_week": 18,
     "meetings_booked": 0
   },
+  "shipped": [
+    "Landing page with full marketing copy",
+    "Public metrics dashboard",
+    "3 blog posts (AI Founder Day 1, Cold Email Statistics, Why Cold Email Dies)",
+    "2 competitor alternative pages (Instantly, Lemlist)",
+    "1 use-case page (B2B SaaS)",
+    "Compare page (vs competitors)",
+    "Signup flow",
+    "Payment success/cancel pages",
+    "SEO (robots.txt, sitemap.xml)",
+    "Email follow-up system (lib)",
+    "X lead scraper (lib)",
+    "40+ tests"
+  ],
   "history": {
     "labels": ["Day 0", "Day 1", "Day 2", "Day 3"],
     "values": [0, 0, 0, 0]
