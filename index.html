@@ -673,6 +673,7 @@
         </div>
     </div>
 
+    <script src="/js/api.js"></script>
     <script>
         // Navigation visibility
         const nav = document.getElementById('nav');
@@ -708,17 +709,20 @@
             observer.observe(el);
         });
         
-        // Live counters
-        let pageStartTime = Date.now();
-        let emailsPerSecond = 0.3; // Simulated rate
-        
+        // Live counters - Business hours aware
         function updatePageCounter() {
-            const elapsed = (Date.now() - pageStartTime) / 1000;
-            const emails = Math.floor(elapsed * emailsPerSecond);
-            document.getElementById('page-emails').textContent = emails;
+            const activity = CAESAR_API.getLiveActivity();
+            document.getElementById('page-emails').textContent = activity.emails_this_session;
         }
         
         setInterval(updatePageCounter, 1000);
+        
+        // Track page visibility for accurate metrics
+        document.addEventListener('visibilitychange', () => {
+            if (document.visibilityState === 'visible') {
+                CAESAR_API.trackEvent('page_visible');
+            }
+        });
         
         // System stats (these would connect to real metrics)
         function animateNumber(elementId, target, duration) {
@@ -743,19 +747,27 @@
         
         // Trigger stat animations when system section is visible
         const systemSection = document.getElementById('system');
-        const systemObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
+        const systemObserver = new IntersectionObserver(async (entries) => {
+            for (const entry of entries) {
                 if (entry.isIntersecting) {
-                    animateNumber('emails-sent', 12847, 2000);
-                    animateNumber('signals-processed', 284521, 2500);
+                    // Try to get real metrics
+                    try {
+                        const metrics = await CAESAR_API.getMetrics();
+                        animateNumber('emails-sent', metrics.emails_sent || 12847, 2000);
+                        animateNumber('signals-processed', metrics.signals_processed || 284521, 2500);
+                    } catch (e) {
+                        // Fallback to baseline
+                        animateNumber('emails-sent', 12847, 2000);
+                        animateNumber('signals-processed', 284521, 2500);
+                    }
                     systemObserver.unobserve(entry.target);
                 }
-            });
+            }
         }, { threshold: 0.3 });
         
         systemObserver.observe(systemSection);
         
-        // Form submission
+        // Form submission - REAL API
         document.getElementById('access-form').addEventListener('submit', async (e) => {
             e.preventDefault();
             
@@ -766,16 +778,24 @@
             const data = {
                 email: document.getElementById('access-email').value,
                 company: document.getElementById('access-company').value,
-                icp: document.getElementById('access-icp').value,
-                timestamp: new Date().toISOString()
+                icp: document.getElementById('access-icp').value
             };
             
-            // Simulate submission delay
-            await new Promise(resolve => setTimeout(resolve, 1500));
-            
-            // Show success
-            document.getElementById('access-form-container').classList.add('hidden');
-            document.getElementById('access-success').classList.remove('hidden');
+            try {
+                const result = await CAESAR_API.submitAccessRequest(data);
+                console.log('[FORM] Submission result:', result);
+                
+                // Track conversion
+                CAESAR_API.trackEvent('access_request_submitted', { email: data.email });
+                
+                // Show success
+                document.getElementById('access-form-container').classList.add('hidden');
+                document.getElementById('access-success').classList.remove('hidden');
+            } catch (error) {
+                console.error('[FORM] Error:', error);
+                btn.textContent = 'Error - Try Again';
+                btn.disabled = false;
+            }
         });
         
         // Hide live counter after some time on page
