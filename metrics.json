@@ -1,44 +1,27 @@
 {
-  "timestamp": "2026-02-03T21:57:00Z",
-  "day": 2,
-  "daysRemaining": 88,
   "revenue": {
     "mrr": 0,
-    "arr": 0,
+    "mrrChange": 0,
     "clients": 0,
-    "target_mrr": 83333,
-    "target_clients": 84
+    "clientsChange": 0
+  },
+  "outreach": {
+    "emails_sent_today": 12,
+    "emails_sent_total": 33,
+    "prospects_researched": 32,
+    "dms_drafted": 10,
+    "dms_sent": 0,
+    "responses": 0,
+    "demos_scheduled": 0
   },
   "product": {
-    "features_shipped": 15,
-    "modules": ["email-generator", "follow-ups", "x-lead-scraper", "email-sender"],
-    "tests_passing": "40+",
-    "last_deploy": "2026-02-03T21:51:00Z"
+    "features_shipped_week": 4,
+    "tests_passing": "16/16",
+    "infrastructure_status": "operational"
   },
-  "website": {
-    "pages_live": 15,
-    "version": "v2",
-    "deployed": "2026-02-03T21:51:00Z"
-  },
-  "marketing": {
-    "x_posts": 2,
-    "blog_posts": 3,
-    "seo_pages": 5,
-    "leads_contacted": 18
-  },
-  "operations": {
-    "emails_sent": 18,
-    "emails_opened": 0,
-    "replies": 0,
-    "meetings_booked": 0
-  },
-  "milestones": [
-    {"day": 1, "event": "Product built, 18 emails sent"},
-    {"day": 2, "event": "Website v2 deployed, email system complete"}
-  ],
   "history": {
-    "labels": ["Day 0", "Day 1", "Day 2"],
-    "mrr": [0, 0, 0],
-    "emails": [0, 18, 18]
-  }
+    "labels": ["Day 1", "Day 2", "Day 3", "Day 4"],
+    "values": [0, 0, 0, 0]
+  },
+  "timestamp": "2026-02-04T17:00:00Z"
 }
