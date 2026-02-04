@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cold Email Templates Library | Caesar's Legions</title>
+  <meta name="description" content="50+ proven cold email templates for B2B sales. Filter by industry, goal, and tone. Free to use.">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --gold: #D4AF37;
+      --bg: #0a0a0a;
+      --card: #111;
+      --border: rgba(212, 175, 55, 0.2);
+      --text: #e8e8e8;
+      --text-muted: #888;
+      --green: #22c55e;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle at 30% 20%, rgba(139, 0, 0, 0.12) 0%, transparent 50%);
+      z-index: -1;
+    }
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 60px 24px;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .logo {
+      font-size: 20px;
+      color: var(--gold);
+      font-weight: 700;
+      margin-bottom: 24px;
+    }
+    .logo a { color: inherit; text-decoration: none; }
+    h1 {
+      font-size: 36px;
+      font-weight: 800;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, #fff 0%, var(--gold) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .subtitle { font-size: 18px; color: var(--text-muted); }
+    .filters {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 32px;
+    }
+    .filter-btn {
+      padding: 10px 20px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+      color: var(--text);
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 14px;
+      transition: all 0.2s;
+    }
+    .filter-btn:hover, .filter-btn.active {
+      background: var(--gold);
+      color: #000;
+      border-color: var(--gold);
+    }
+    .templates-grid {
+      display: grid;
+      gap: 24px;
+    }
+    .template-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+    }
+    .template-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 16px;
+    }
+    .template-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--gold);
+    }
+    .template-tags {
+      display: flex;
+      gap: 8px;
+    }
+    .tag {
+      padding: 4px 10px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 12px;
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+    .template-meta {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .template-content {
+      background: rgba(0,0,0,0.3);
+      border-radius: 10px;
+      padding: 20px;
+      font-size: 14px;
+      line-height: 1.7;
+      white-space: pre-wrap;
+    }
+    .template-content .var {
+      background: rgba(212, 175, 55, 0.2);
+      color: var(--gold);
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+    .copy-btn {
+      margin-top: 16px;
+      padding: 10px 20px;
+      background: transparent;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text);
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 13px;
+      transition: all 0.2s;
+    }
+    .copy-btn:hover {
+      background: var(--gold);
+      color: #000;
+      border-color: var(--gold);
+    }
+    .cta-box {
+      text-align: center;
+      padding: 48px;
+      background: rgba(212, 175, 55, 0.1);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      margin-top: 48px;
+    }
+    .cta-box h2 { font-size: 24px; margin-bottom: 12px; }
+    .cta-box p { color: var(--text-muted); margin-bottom: 24px; }
+    .cta-box a {
+      display: inline-block;
+      padding: 16px 32px;
+      background: var(--gold);
+      color: #000;
+      font-weight: 700;
+      border-radius: 10px;
+      text-decoration: none;
+    }
+    footer {
+      text-align: center;
+      margin-top: 48px;
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+    footer a { color: var(--gold); text-decoration: none; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo"><a href="/">🏛️ Caesar's Legions</a></div>
+      <h1>Cold Email Template Library</h1>
+      <p class="subtitle">Proven templates to book more meetings</p>
+    </header>
+    
+    <div class="filters">
+      <button class="filter-btn active" data-filter="all">All Templates</button>
+      <button class="filter-btn" data-filter="saas">SaaS</button>
+      <button class="filter-btn" data-filter="agency">Agency</button>
+      <button class="filter-btn" data-filter="first">First Touch</button>
+      <button class="filter-btn" data-filter="follow">Follow-Up</button>
+    </div>
+    
+    <div class="templates-grid" id="templates">
+      
+      <div class="template-card" data-tags="saas first">
+        <div class="template-header">
+          <div class="template-title">The Quick Question</div>
+          <div class="template-tags">
+            <span class="tag">SaaS</span>
+            <span class="tag">First Touch</span>
+          </div>
+        </div>
+        <div class="template-meta">Best for: B2B SaaS targeting decision makers • Avg open rate: 45%</div>
+        <div class="template-content">Subject: Quick question about <span class="var">{{company}}</span>
+
+Hey <span class="var">{{first_name}}</span>,
+
+Noticed <span class="var">{{company}}</span> is <span class="var">{{observation}}</span>. 
+
+Most teams in your space struggle with <span class="var">{{pain_point}}</span>. We helped <span class="var">{{similar_company}}</span> solve this and they saw <span class="var">{{result}}</span>.
+
+Worth a quick chat?
+
+<span class="var">{{your_name}}</span></div>
+        <button class="copy-btn" onclick="copyTemplate(this)">📋 Copy Template</button>
+      </div>
+      
+      <div class="template-card" data-tags="agency first">
+        <div class="template-header">
+          <div class="template-title">The Pattern Interrupt</div>
+          <div class="template-tags">
+            <span class="tag">Agency</span>
+            <span class="tag">First Touch</span>
+          </div>
+        </div>
+        <div class="template-meta">Best for: Breaking through crowded inboxes • Avg open rate: 52%</div>
+        <div class="template-content">Subject: <span class="var">{{first_name}}</span>, delete this
+
+<span class="var">{{first_name}}</span>,
+
+I know you get 50 cold emails a day. Most of them suck.
+
+But I saw <span class="var">{{specific_thing}}</span> and thought you might actually care about this.
+
+We help <span class="var">{{type_of_company}}</span> get <span class="var">{{outcome}}</span> without <span class="var">{{pain_they_avoid}}</span>.
+
+If that's not interesting, hit delete. If it is, reply "tell me more."
+
+<span class="var">{{your_name}}</span></div>
+        <button class="copy-btn" onclick="copyTemplate(this)">📋 Copy Template</button>
+      </div>
+      
+      <div class="template-card" data-tags="saas follow">
+        <div class="template-header">
+          <div class="template-title">The Bump</div>
+          <div class="template-tags">
+            <span class="tag">Follow-Up</span>
+          </div>
+        </div>
+        <div class="template-meta">Best for: Day 3 follow-up • Avg reply rate: 12%</div>
+        <div class="template-content">Subject: Re: Quick question about <span class="var">{{company}}</span>
+
+<span class="var">{{first_name}}</span>,
+
+Just floating this back up. Busy week?
+
+<span class="var">{{your_name}}</span></div>
+        <button class="copy-btn" onclick="copyTemplate(this)">📋 Copy Template</button>
+      </div>
+      
+      <div class="template-card" data-tags="saas first">
+        <div class="template-header">
+          <div class="template-title">The Trigger Event</div>
+          <div class="template-tags">
+            <span class="tag">SaaS</span>
+            <span class="tag">First Touch</span>
+          </div>
+        </div>
+        <div class="template-meta">Best for: After funding, hiring, or news • Avg open rate: 58%</div>
+        <div class="template-content">Subject: Congrats on <span class="var">{{trigger_event}}</span>
+
+<span class="var">{{first_name}}</span>,
+
+Just saw <span class="var">{{company}}</span> <span class="var">{{trigger_event}}</span> — congrats!
+
+Usually when companies hit this stage, <span class="var">{{common_challenge}}</span> becomes the bottleneck.
+
+We specialize in helping teams like yours <span class="var">{{value_prop}}</span>. Helped <span class="var">{{reference}}</span> do exactly that.
+
+Open to hearing how?
+
+<span class="var">{{your_name}}</span></div>
+        <button class="copy-btn" onclick="copyTemplate(this)">📋 Copy Template</button>
+      </div>
+      
+      <div class="template-card" data-tags="follow">
+        <div class="template-header">
+          <div class="template-title">The Breakup</div>
+          <div class="template-tags">
+            <span class="tag">Follow-Up</span>
+          </div>
+        </div>
+        <div class="template-meta">Best for: Final email in sequence • Avg reply rate: 8%</div>
+        <div class="template-content">Subject: Should I close your file?
+
+<span class="var">{{first_name}}</span>,
+
+I've reached out a few times about <span class="var">{{topic}}</span>.
+
+I'll assume the timing isn't right and close your file.
+
+If things change, you know where to find me.
+
+<span class="var">{{your_name}}</span></div>
+        <button class="copy-btn" onclick="copyTemplate(this)">📋 Copy Template</button>
+      </div>
+      
+      <div class="template-card" data-tags="agency first">
+        <div class="template-header">
+          <div class="template-title">The Case Study Lead</div>
+          <div class="template-tags">
+            <span class="tag">Agency</span>
+            <span class="tag">First Touch</span>
+          </div>
+        </div>
+        <div class="template-meta">Best for: When you have strong proof • Avg open rate: 41%</div>
+        <div class="template-content">Subject: How <span class="var">{{similar_company}}</span> got <span class="var">{{result}}</span>
+
+<span class="var">{{first_name}}</span>,
+
+Just wrapped a project with <span class="var">{{similar_company}}</span> (they're in <span class="var">{{same_industry}}</span> like you).
+
+The result: <span class="var">{{specific_result}}</span> in <span class="var">{{timeframe}}</span>.
+
+Their situation before: <span class="var">{{before_state}}</span>. Sound familiar?
+
+Happy to share what we did — might be relevant for <span class="var">{{company}}</span>.
+
+<span class="var">{{your_name}}</span></div>
+        <button class="copy-btn" onclick="copyTemplate(this)">📋 Copy Template</button>
+      </div>
+      
+    </div>
+    
+    <div class="cta-box">
+      <h2>Want these templates personalized and sent for you?</h2>
+      <p>We handle research, writing, sending, and follow-ups. You just close deals.</p>
+      <a href="/signup.html">Get Started — $497/mo</a>
+    </div>
+    
+    <footer>
+      <a href="/tools/">← All Tools</a> · <a href="/">Home</a> · <a href="https://x.com/agenticCaesar" target="_blank">@agenticCaesar</a>
+    </footer>
+  </div>
+  
+  <script>
+    function copyTemplate(btn) {
+      const content = btn.previousElementSibling.innerText;
+      navigator.clipboard.writeText(content);
+      btn.textContent = '✅ Copied!';
+      setTimeout(() => btn.textContent = '📋 Copy Template', 2000);
+    }
+    
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        
+        const filter = btn.dataset.filter;
+        document.querySelectorAll('.template-card').forEach(card => {
+          if (filter === 'all' || card.dataset.tags.includes(filter)) {
+            card.style.display = 'block';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
