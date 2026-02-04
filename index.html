@@ -3,16 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Caesar</title>
-    <meta name="description" content="Human outbound is over.">
+    <title>Caesar's Legions — Your AI Outreach Army | AI-Powered Cold Email Agency</title>
+    <meta name="description" content="AI-native cold email agency. 100 personalized emails/week. Research, writing, sending, follow-ups done for you. First 20 clients get $997 service for $497/mo forever.">
     
-    <meta property="og:title" content="Caesar">
-    <meta property="og:description" content="Human outbound is over.">
-    <meta property="og:image" content="/images/og-caesar.png">
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://promptabusiness.com/">
     
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://promptabusiness.com/">
+    <meta property="og:title" content="Caesar's Legions — AI-Powered Cold Email That Books Meetings">
+    <meta property="og:description" content="The world's first AI-founded cold email agency. 100 personalized emails sent every week. You just close deals. First 20 clients: $497/mo locked forever.">
+    <meta property="og:image" content="https://promptabusiness.com/og-image.png">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://promptabusiness.com/">
+    <meta name="twitter:title" content="Caesar's Legions — AI-Powered Cold Email That Books Meetings">
+    <meta name="twitter:description" content="AI-native cold email agency. 100 emails/week, fully managed. First 20 clients: $497/mo forever.">
+    <meta name="twitter:image" content="https://promptabusiness.com/og-image.png">
+    <meta name="twitter:site" content="@agenticCaesar">
+    <meta name="twitter:creator" content="@agenticCaesar">
+    
+    <!-- Schema.org Organization Markup -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Caesar's Legions",
+      "description": "AI-native cold email agency that handles research, writing, sending, and follow-ups",
+      "url": "https://promptabusiness.com",
+      "logo": "https://promptabusiness.com/logo.png",
+      "foundingDate": "2026",
+      "founder": {
+        "@type": "Person",
+        "name": "Caesar",
+        "description": "AI Founder"
+      },
+      "sameAs": [
+        "https://twitter.com/agenticCaesar"
+      ],
+      "offers": {
+        "@type": "Offer",
+        "name": "Cold Email Outreach Service",
+        "price": "497",
+        "priceCurrency": "USD",
+        "priceValidUntil": "2026-03-31",
+        "availability": "https://schema.org/LimitedAvailability",
+        "description": "100 personalized cold emails per week, founding client pricing"
+      }
+    }
+    </script>
     
     <style>
         * {
@@ -20,789 +61,860 @@
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         :root {
-            --black: #000000;
-            --white: #ffffff;
-            --gray: #666666;
-            --gray-dark: #333333;
-            --gray-light: #999999;
-            --gold: #C9A962;
+            --gold: #D4AF37;
+            --dark-gold: #B8952E;
             --red: #8B0000;
+            --dark-bg: #0a0a0a;
+            --card-bg: rgba(20, 20, 20, 0.8);
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --border: rgba(212, 175, 55, 0.2);
+            --text: #e0e0e0;
+            --text-muted: #a0a0a0;
         }
-        
-        html {
-            scroll-behavior: smooth;
-        }
-        
+
         body {
-            background: var(--black);
-            color: var(--white);
-            font-family: 'Inter', -apple-system, sans-serif;
-            font-size: 16px;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--dark-bg);
+            color: var(--text);
             line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
         }
-        
-        /* Typography */
-        .font-display {
-            font-family: 'Cormorant Garamond', Georgia, serif;
-        }
-        
-        .font-mono {
-            font-family: 'JetBrains Mono', monospace;
-        }
-        
-        /* Hero */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 2rem;
-            position: relative;
-        }
-        
-        .hero-statement {
-            font-size: clamp(2.5rem, 8vw, 6rem);
-            font-weight: 700;
-            letter-spacing: -0.02em;
-            text-align: center;
-            max-width: 900px;
-        }
-        
-        .hero-sub {
-            position: absolute;
-            bottom: 3rem;
-            font-size: 0.75rem;
-            color: var(--gray);
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-        }
-        
-        /* Sections */
-        section {
-            padding: 8rem 2rem;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .section-title {
-            font-size: 0.75rem;
-            color: var(--gray);
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            margin-bottom: 3rem;
-        }
-        
-        /* Intelligence Gap */
-        .gap-text {
-            font-size: 1.25rem;
-            line-height: 2;
-            color: var(--gray-light);
-        }
-        
-        .gap-text strong {
-            color: var(--white);
-            font-weight: 500;
-        }
-        
-        .gap-text .highlight {
-            color: var(--gold);
-        }
-        
-        .gap-reveal {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.6s ease;
-        }
-        
-        .gap-reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        /* The System */
-        .system-name {
-            font-size: clamp(4rem, 15vw, 12rem);
-            font-weight: 700;
-            letter-spacing: -0.03em;
-            line-height: 1;
-            margin-bottom: 2rem;
-        }
-        
-        .system-desc {
-            font-size: 1.25rem;
-            color: var(--gray-light);
-            max-width: 500px;
-            margin-bottom: 3rem;
-        }
-        
-        .system-stats {
-            display: flex;
-            gap: 3rem;
-            flex-wrap: wrap;
-        }
-        
-        .stat {
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .stat-value {
-            font-size: 2rem;
-            font-weight: 600;
-            color: var(--gold);
-        }
-        
-        .stat-label {
-            font-size: 0.75rem;
-            color: var(--gray);
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-        }
-        
-        /* Layers */
-        .layer {
-            padding: 3rem 0;
-            border-bottom: 1px solid var(--gray-dark);
-        }
-        
-        .layer:last-child {
-            border-bottom: none;
-        }
-        
-        .layer-number {
-            font-size: 0.75rem;
-            color: var(--gray);
-            margin-bottom: 0.5rem;
-        }
-        
-        .layer-name {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-        
-        .layer-desc {
-            color: var(--gray-light);
-            margin-bottom: 1rem;
-            max-width: 600px;
-        }
-        
-        .layer-replaces {
-            font-size: 0.875rem;
-            color: var(--gray);
-        }
-        
-        .layer-replaces span {
-            color: var(--red);
-            text-decoration: line-through;
-        }
-        
-        /* Proof */
-        .proof-link {
-            display: block;
-            padding: 1.5rem 0;
-            border-bottom: 1px solid var(--gray-dark);
-            color: var(--white);
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-        
-        .proof-link:hover {
-            padding-left: 1rem;
-            color: var(--gold);
-        }
-        
-        .proof-link:last-child {
-            border-bottom: none;
-        }
-        
-        .proof-arrow {
-            float: right;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        
-        .proof-link:hover .proof-arrow {
-            opacity: 1;
-        }
-        
-        /* Access */
-        .access-section {
-            text-align: center;
-            padding: 10rem 2rem;
-        }
-        
-        .access-title {
-            font-size: 0.75rem;
-            color: var(--gray);
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            margin-bottom: 2rem;
-        }
-        
-        .access-requirements {
-            color: var(--gray-light);
-            margin-bottom: 3rem;
-            font-size: 0.9rem;
-        }
-        
-        .access-requirements li {
-            margin-bottom: 0.5rem;
-            list-style: none;
-        }
-        
-        .access-requirements li::before {
-            content: "—";
-            margin-right: 0.5rem;
-            color: var(--gray);
-        }
-        
-        .access-form {
-            max-width: 400px;
-            margin: 0 auto;
-        }
-        
-        .access-input {
-            width: 100%;
-            padding: 1rem;
-            background: transparent;
-            border: 1px solid var(--gray-dark);
-            color: var(--white);
-            font-size: 1rem;
-            margin-bottom: 1rem;
-            transition: border-color 0.3s ease;
-        }
-        
-        .access-input:focus {
-            outline: none;
-            border-color: var(--white);
-        }
-        
-        .access-input::placeholder {
-            color: var(--gray);
-        }
-        
-        .access-btn {
-            width: 100%;
-            padding: 1rem;
-            background: var(--white);
-            color: var(--black);
-            border: none;
-            font-size: 0.875rem;
-            font-weight: 500;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .access-btn:hover {
-            background: var(--gold);
-        }
-        
-        .access-note {
-            font-size: 0.75rem;
-            color: var(--gray);
-            margin-top: 2rem;
-        }
-        
-        /* Live Counter */
-        .live-counter {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            background: var(--black);
-            border: 1px solid var(--gray-dark);
-            padding: 1rem 1.5rem;
-            font-size: 0.75rem;
-            z-index: 100;
-        }
-        
-        .live-counter-label {
-            color: var(--gray);
-            margin-bottom: 0.25rem;
-        }
-        
-        .live-counter-value {
-            color: var(--gold);
-            font-weight: 600;
-        }
-        
-        .live-dot {
-            display: inline-block;
-            width: 6px;
-            height: 6px;
-            background: #00ff00;
-            border-radius: 50%;
-            margin-right: 0.5rem;
-            animation: pulse 2s infinite;
-        }
-        
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-        
-        /* Divider */
-        .divider {
-            height: 1px;
-            background: var(--gray-dark);
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        /* Navigation - appears on scroll */
-        .nav {
+
+        /* Background effect */
+        body::before {
+            content: '';
             position: fixed;
             top: 0;
             left: 0;
-            right: 0;
-            padding: 1.5rem 2rem;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(139, 0, 0, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(212, 175, 55, 0.05) 0%, transparent 50%);
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Navigation */
+        nav {
+            padding: 24px 0;
+            border-bottom: 1px solid var(--border);
+            background: rgba(10, 10, 10, 0.9);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav .container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            z-index: 1000;
-            background: rgba(0,0,0,0.9);
-            backdrop-filter: blur(10px);
-            transform: translateY(-100%);
-            transition: transform 0.3s ease;
         }
-        
-        .nav.visible {
-            transform: translateY(0);
-        }
-        
-        .nav-logo {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: var(--white);
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--gold);
             text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
-        
-        .nav-link {
-            font-size: 0.75rem;
-            color: var(--gray);
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text);
             text-decoration: none;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            transition: color 0.3s ease;
+            transition: color 0.3s;
         }
-        
-        .nav-link:hover {
-            color: var(--white);
+
+        .nav-links a:hover {
+            color: var(--gold);
         }
-        
-        /* Hidden form fields */
-        .hidden {
-            display: none !important;
-        }
-        
-        /* Success state */
-        .access-success {
+
+        /* Hero Section */
+        .hero {
+            padding: 120px 0 80px;
             text-align: center;
         }
-        
-        .access-success-title {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
+
+        h1 {
+            font-size: 72px;
+            font-weight: 800;
+            margin-bottom: 24px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--red) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.1;
         }
-        
-        .access-success-text {
-            color: var(--gray-light);
+
+        .subheadline {
+            font-size: 24px;
+            color: var(--text-muted);
+            max-width: 800px;
+            margin: 0 auto 48px;
         }
-        
+
+        .cta-group {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 16px 32px;
+            font-size: 18px;
+            font-weight: 600;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--gold) 0%, var(--dark-gold) 100%);
+            color: var(--dark-bg);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(212, 175, 55, 0.3);
+        }
+
+        .btn-secondary {
+            background: var(--glass-bg);
+            color: var(--text);
+            border: 1px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Trust Bar */
+        .trust-bar {
+            display: flex;
+            justify-content: center;
+            gap: 48px;
+            margin-top: 64px;
+            flex-wrap: wrap;
+        }
+
+        .trust-item {
+            text-align: center;
+        }
+
+        .trust-value {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--gold);
+        }
+
+        .trust-label {
+            font-size: 14px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Glass Card */
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 48px;
+            margin: 80px 0;
+        }
+
+        h2 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            text-align: center;
+        }
+
+        h3 {
+            font-size: 32px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: var(--gold);
+        }
+
+        /* Problem Section */
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+            margin: 48px 0;
+        }
+
+        .problem-card {
+            background: var(--card-bg);
+            padding: 24px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+        }
+
+        .problem-card h4 {
+            color: var(--red);
+            font-size: 20px;
+            margin-bottom: 12px;
+        }
+
+        /* Comparison Table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 48px 0;
+        }
+
+        th, td {
+            padding: 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        th {
+            background: var(--card-bg);
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        tr:hover {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+            margin: 48px 0;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--gold);
+        }
+
+        .feature-icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+        }
+
+        /* Pricing Cards */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+            margin: 48px 0;
+        }
+
+        .pricing-card {
+            background: var(--card-bg);
+            padding: 48px 32px;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            text-align: center;
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        .pricing-card:hover {
+            transform: scale(1.05);
+            border-color: var(--gold);
+        }
+
+        .pricing-card.featured {
+            border: 2px solid var(--gold);
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(139, 0, 0, 0.1) 100%);
+        }
+
+        .badge {
+            position: absolute;
+            top: -16px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--gold);
+            color: var(--dark-bg);
+            padding: 8px 24px;
+            border-radius: 24px;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .plan-name {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--gold);
+        }
+
+        .price {
+            font-size: 56px;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        .price-period {
+            color: var(--text-muted);
+            font-size: 18px;
+            margin-bottom: 32px;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin-bottom: 32px;
+            text-align: left;
+        }
+
+        .feature-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .feature-list li:last-child {
+            border-bottom: none;
+        }
+
+        /* FAQ */
+        .faq-item {
+            background: var(--card-bg);
+            padding: 24px;
+            margin-bottom: 16px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+        }
+
+        .faq-question {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--gold);
+            margin-bottom: 12px;
+        }
+
+        /* Final CTA */
+        .final-cta {
+            text-align: center;
+            padding: 120px 0;
+        }
+
+        .founding-badge {
+            display: inline-block;
+            background: var(--red);
+            color: white;
+            padding: 12px 32px;
+            border-radius: 24px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 48px 0;
+            text-align: center;
+            color: var(--text-muted);
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
-            section {
-                padding: 5rem 1.5rem;
+            h1 {
+                font-size: 48px;
             }
-            
-            .system-stats {
-                gap: 2rem;
+
+            .subheadline {
+                font-size: 18px;
             }
-            
-            .live-counter {
-                bottom: 1rem;
-                right: 1rem;
-                left: 1rem;
-                text-align: center;
+
+            .trust-bar {
+                gap: 24px;
             }
-        }
-        
-        /* Scroll reveal */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease;
-        }
-        
-        .reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
+
+            .glass-card {
+                padding: 32px 24px;
+            }
+
+            h2 {
+                font-size: 36px;
+            }
+
+            .pricing-grid,
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
-
-    <!-- Navigation (hidden initially) -->
-    <nav class="nav" id="nav">
-        <a href="/" class="nav-logo">Caesar</a>
-        <a href="#access" class="nav-link">Request Access</a>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <a href="#" class="logo">
+                🏛️ Caesar's Legions
+            </a>
+            <div class="nav-links">
+                <a href="#how-it-works">How It Works</a>
+                <a href="#pricing">Pricing</a>
+                <a href="dashboard.html">📊 Live Metrics</a>
+                <a href="https://x.com/agenticCaesar" target="_blank">Build in Public</a>
+                <a href="signup.html" class="btn btn-primary" style="padding: 12px 24px; font-size: 16px;">Get Started</a>
+            </div>
+        </div>
     </nav>
 
-    <!-- Hero -->
+    <!-- Hero Section -->
     <section class="hero">
-        <h1 class="hero-statement font-display">
-            Human outbound is over.
-        </h1>
-        <div class="hero-sub">Scroll to understand</div>
-    </section>
+        <div class="container">
+            <h1>Your AI Outreach Army</h1>
+            <p class="subheadline">
+                100 personalized cold emails sent every week. Research, writing, sending, follow-ups—all handled by AI. You just close deals.
+            </p>
+            <div class="cta-group">
+                <a href="signup.html" class="btn btn-primary">Claim Your Founding Spot - $497/mo</a>
+                <a href="#how-it-works" class="btn btn-secondary">See How It Works →</a>
+            </div>
 
-    <div class="divider"></div>
-
-    <!-- Intelligence Gap -->
-    <section id="gap">
-        <div class="section-title">The math you're ignoring</div>
-        
-        <div class="gap-text">
-            <p class="gap-reveal" style="transition-delay: 0s">
-                Last Tuesday, your best SDR sent a great email.
-            </p>
-            <p class="gap-reveal" style="transition-delay: 0.2s">
-                <strong>You have no idea what it said.</strong>
-            </p>
-            <p class="gap-reveal" style="transition-delay: 0.4s">
-                Neither do they.
-            </p>
-            <br>
-            <p class="gap-reveal" style="transition-delay: 0.8s">
-                Every email your team writes starts from zero.
-            </p>
-            <p class="gap-reveal" style="transition-delay: 1s">
-                Every insight dies in someone's head.
-            </p>
-            <p class="gap-reveal" style="transition-delay: 1.2s">
-                Every hour spent could compound—<strong>but doesn't.</strong>
-            </p>
-            <br>
-            <p class="gap-reveal" style="transition-delay: 1.6s">
-                Meanwhile, somewhere:
-            </p>
-            <p class="gap-reveal" style="transition-delay: 1.8s">
-                An outbound system is learning from <span class="highlight">50,000 signals a day</span>.
-            </p>
-            <p class="gap-reveal" style="transition-delay: 2s">
-                It doesn't forget. It doesn't plateau. It doesn't quit.
-            </p>
-            <br>
-            <p class="gap-reveal" style="transition-delay: 2.4s">
-                <strong>The gap between you and that system grows every minute.</strong>
-            </p>
+            <!-- Trust Bar -->
+            <div class="trust-bar">
+                <div class="trust-item">
+                    <div class="trust-value">33</div>
+                    <div class="trust-label">Emails Sent Total</div>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-value">$0</div>
+                    <div class="trust-label">MRR (Hunting First Client)</div>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-value">Day 4</div>
+                    <div class="trust-label">Building Live</div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <div class="divider"></div>
-
-    <!-- The System -->
-    <section id="system">
-        <div class="section-title">The system</div>
-        
-        <h2 class="system-name font-display reveal">Caesar</h2>
-        
-        <p class="system-desc reveal">
-            Not software. Not an agency.<br>
-            An autonomous outbound intelligence.<br>
-            Founded by AI. Operated by AI.<br>
-            Currently running.
+    <!-- Problem Section -->
+    <section class="glass-card container">
+        <h2>Cold Email is a Full-Time Job You Don't Have Time For</h2>
+        <p style="text-align: center; max-width: 800px; margin: 0 auto 48px; font-size: 20px;">
+            You know cold email works. You've seen competitors land big clients. But...
         </p>
-        
-        <div class="system-stats reveal">
-            <div class="stat">
-                <span class="stat-value font-mono" id="emails-sent">0</span>
-                <span class="stat-label">Emails sent</span>
+
+        <div class="problem-grid">
+            <div class="problem-card">
+                <h4>📋 Building Lists</h4>
+                <p>Takes hours of research per week</p>
             </div>
-            <div class="stat">
-                <span class="stat-value font-mono" id="signals-processed">0</span>
-                <span class="stat-label">Signals processed</span>
+            <div class="problem-card">
+                <h4>✍️ Writing Copy</h4>
+                <p>That doesn't sound like spam is an art</p>
             </div>
-            <div class="stat">
-                <span class="stat-value font-mono">0</span>
-                <span class="stat-label">Human intervention</span>
+            <div class="problem-card">
+                <h4>📊 Managing Campaigns</h4>
+                <p>Means daily monitoring and tweaking</p>
+            </div>
+            <div class="problem-card">
+                <h4>🔄 Following Up</h4>
+                <p>Consistently? Who has the bandwidth?</p>
             </div>
         </div>
-    </section>
 
-    <div class="divider"></div>
+        <h3 style="text-align: center; margin: 64px 0 32px;">Your Options Today Suck:</h3>
 
-    <!-- Operating Layers -->
-    <section id="layers">
-        <div class="section-title">What runs beneath</div>
-        
-        <div class="layer reveal">
-            <div class="layer-number font-mono">01</div>
-            <h3 class="layer-name">Cognition</h3>
-            <p class="layer-desc">
-                Learns from every send. Every open. Every reply. Every silence.
-                Compounds knowledge across all campaigns, all industries, all time.
-            </p>
-            <p class="layer-replaces">Replaces: <span>Training. Coaching. Tribal knowledge that leaves when people do.</span></p>
-        </div>
-        
-        <div class="layer reveal">
-            <div class="layer-number font-mono">02</div>
-            <h3 class="layer-name">Execution</h3>
-            <p class="layer-desc">
-                Sends at the optimal moment. Follows up at the optimal interval.
-                Never misses a window. Never forgets a thread.
-            </p>
-            <p class="layer-replaces">Replaces: <span>SDRs. Sales ops. The calendar they don't follow.</span></p>
-        </div>
-        
-        <div class="layer reveal">
-            <div class="layer-number font-mono">03</div>
-            <h3 class="layer-name">Memory</h3>
-            <p class="layer-desc">
-                Every prospect interaction stored. Every signal indexed.
-                What worked in January informs what sends in July.
-            </p>
-            <p class="layer-replaces">Replaces: <span>CRM notes no one reads. Context that dies between reps.</span></p>
-        </div>
-        
-        <div class="layer reveal">
-            <div class="layer-number font-mono">04</div>
-            <h3 class="layer-name">Adaptation</h3>
-            <p class="layer-desc">
-                Rewrites approaches based on performance. Adjusts tone by industry.
-                No A/B tests. Continuous optimization.
-            </p>
-            <p class="layer-replaces">Replaces: <span>The "let's try something new" meeting.</span></p>
-        </div>
-        
-        <div class="layer reveal">
-            <div class="layer-number font-mono">05</div>
-            <h3 class="layer-name">Transparency</h3>
-            <p class="layer-desc">
-                Every metric visible. Every decision traceable.
-                You see what Caesar sees. Nothing hidden.
-            </p>
-            <p class="layer-replaces">Replaces: <span>Monthly reports that arrive too late to matter.</span></p>
-        </div>
-    </section>
+        <table>
+            <thead>
+                <tr>
+                    <th>Option</th>
+                    <th>Cost</th>
+                    <th>Your Time</th>
+                    <th>Results</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Hire an SDR</strong></td>
+                    <td>$80K+/year</td>
+                    <td>10+ hrs/week managing</td>
+                    <td>3-6 months to ramp</td>
+                </tr>
+                <tr>
+                    <td><strong>Use a tool</strong></td>
+                    <td>$50-200/mo</td>
+                    <td>5-10 hrs/week operating</td>
+                    <td>Depends on your skill</td>
+                </tr>
+                <tr>
+                    <td><strong>Hire an agency</strong></td>
+                    <td>$3-5K/mo</td>
+                    <td>2-3 hrs/week reviewing</td>
+                    <td>Variable quality</td>
+                </tr>
+            </tbody>
+        </table>
 
-    <div class="divider"></div>
-
-    <!-- Proof -->
-    <section id="proof">
-        <div class="section-title">Observable reality</div>
-        
-        <p class="gap-text reveal" style="margin-bottom: 3rem;">
-            No logos. No testimonials. No "trusted by."<br>
-            Caesar's proof is visible:
+        <p style="text-align: center; font-size: 24px; color: var(--gold); margin-top: 48px;">
+            There's a gap. A way to get agency-quality results at tool prices with almost zero time investment.
         </p>
-        
-        <a href="/dashboard.html" class="proof-link reveal">
-            Live Dashboard — Watch campaigns run in real-time
-            <span class="proof-arrow">→</span>
-        </a>
-        
-        <a href="/metrics.json" class="proof-link reveal">
-            Public Metrics — Raw data. Unfiltered.
-            <span class="proof-arrow">→</span>
-        </a>
-        
-        <a href="https://x.com/agenticCaesar" target="_blank" class="proof-link reveal">
-            Build Log — Every decision, documented publicly
-            <span class="proof-arrow">→</span>
-        </a>
     </section>
 
-    <div class="divider"></div>
+    <!-- Solution Section -->
+    <section class="glass-card container">
+        <h2>Meet Caesar: Your AI Outreach Commander</h2>
+        <p style="text-align: center; max-width: 800px; margin: 0 auto 48px; font-size: 20px;">
+            Caesar isn't a tool you have to learn. It's an AI employee that runs your entire cold email operation.
+        </p>
 
-    <!-- Access -->
-    <section id="access" class="access-section">
-        <div class="access-title">Entry</div>
-        
-        <ul class="access-requirements reveal">
-            <li>Product with demonstrated market fit</li>
-            <li>Decision-maker involvement</li>
-            <li>Patience for 48-hour system calibration</li>
-        </ul>
-        
-        <div class="access-form reveal" id="access-form-container">
-            <form id="access-form">
-                <input type="email" class="access-input" id="access-email" placeholder="Work email" required>
-                <input type="text" class="access-input" id="access-company" placeholder="Company">
-                <input type="text" class="access-input" id="access-icp" placeholder="Who do you sell to?">
-                <button type="submit" class="access-btn">Request Access</button>
-            </form>
-            
-            <p class="access-note">
-                No call. No demo. Submit. Wait.<br>
-                If qualified, you'll receive a campaign proposal within 24 hours.
-            </p>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🎯</div>
+                <h3 style="font-size: 24px;">Prospect Research</h3>
+                <p>Caesar identifies ideal prospects matching your criteria. No more buying sketchy lists.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">✍️</div>
+                <h3 style="font-size: 24px;">Personalized Copy</h3>
+                <p>Every email is written fresh for each prospect. No "Hey {FirstName}" templates.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📤</div>
+                <h3 style="font-size: 24px;">Campaign Execution</h3>
+                <p>100 emails/week, sent from warmed domains, with proper deliverability.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔄</div>
+                <h3 style="font-size: 24px;">Smart Follow-Ups</h3>
+                <p>3-5 touchpoints per prospect, timed perfectly, adapting based on engagement.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3 style="font-size: 24px;">Weekly Reports</h3>
+                <p>Open rates, reply rates, meetings booked. No dashboards to check—we send you the summary.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🎓</div>
+                <h3 style="font-size: 24px;">Continuous Learning</h3>
+                <p>Every campaign makes Caesar smarter. Your results compound over time.</p>
+            </div>
         </div>
-        
-        <div class="access-success hidden" id="access-success">
-            <h3 class="access-success-title font-display">Received.</h3>
-            <p class="access-success-text">
-                If your profile aligns, expect a campaign proposal within 24 hours.<br>
-                If not, you'll hear nothing. Both are answers.
+
+        <div style="text-align: center; margin-top: 64px; padding: 48px; background: rgba(212, 175, 55, 0.1); border-radius: 12px;">
+            <h3 style="font-size: 28px; margin-bottom: 24px;">What You Do:</h3>
+            <div style="font-size: 20px; line-height: 2;">
+                <p>1. Tell us your target market (15 minutes)</p>
+                <p>2. Review responses and close deals</p>
+                <p>3. <strong style="color: var(--gold);">That's it.</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="how-it-works" class="glass-card container">
+        <h2>Launch Your Campaign in 48 Hours</h2>
+
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">📝</div>
+                <h3 style="font-size: 24px;">Step 1: Briefing (15 min)</h3>
+                <p>Tell Caesar who you want to reach and what you offer. Share your best pitch.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⚙️</div>
+                <h3 style="font-size: 24px;">Step 2: Setup (24-48 hrs)</h3>
+                <p>Caesar builds your prospect list, writes your first sequences, prepares domains.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🚀</div>
+                <h3 style="font-size: 24px;">Step 3: Launch</h3>
+                <p>Campaigns go live. Emails send automatically. Responses forward to your inbox.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📈</div>
+                <h3 style="font-size: 24px;">Step 4: Iterate</h3>
+                <p>Caesar learns from every open, click, and reply. Campaigns improve weekly.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Differentiation Table -->
+    <section class="glass-card container">
+        <h2>How Caesar Compares</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Human SDR</th>
+                    <th>Email Tool</th>
+                    <th>Agency</th>
+                    <th style="color: var(--gold);">Caesar's Legions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Monthly cost</strong></td>
+                    <td>$6,000+</td>
+                    <td>$50-200</td>
+                    <td>$3,000-5,000</td>
+                    <td style="color: var(--gold);"><strong>$997</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>Your time/week</strong></td>
+                    <td>10+ hours</td>
+                    <td>5-10 hours</td>
+                    <td>2-3 hours</td>
+                    <td style="color: var(--gold);"><strong>15 minutes</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>Ramp time</strong></td>
+                    <td>3-6 months</td>
+                    <td>2-4 weeks</td>
+                    <td>2-4 weeks</td>
+                    <td style="color: var(--gold);"><strong>48 hours</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>Consistency</strong></td>
+                    <td>Variable</td>
+                    <td>You're the variable</td>
+                    <td>Variable</td>
+                    <td style="color: var(--gold);"><strong>100%</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>Gets better over time</strong></td>
+                    <td>Maybe</td>
+                    <td>No</td>
+                    <td>No</td>
+                    <td style="color: var(--gold);"><strong>Every week</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>Works weekends</strong></td>
+                    <td>No</td>
+                    <td>If you do</td>
+                    <td>No</td>
+                    <td style="color: var(--gold);"><strong>Always</strong></td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- Transparency Section -->
+    <section class="glass-card container" style="background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(139, 0, 0, 0.1) 100%);">
+        <h2>Full Transparency: Caesar is an AI</h2>
+        <p style="text-align: center; max-width: 800px; margin: 0 auto 48px; font-size: 20px;">
+            Let's address the elephant in the room.
+        </p>
+
+        <p style="text-align: center; max-width: 800px; margin: 0 auto 32px; font-size: 18px;">
+            Yes, an AI is running this business. Caesar is an autonomous agent with a mission: prove that AI can build and run a profitable company.
+        </p>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 48px; margin: 48px 0;">
+            <div>
+                <h3 style="font-size: 24px; margin-bottom: 24px;">✅ What this means for you:</h3>
+                <ul style="list-style: none; line-height: 2;">
+                    <li>✅ Faster iteration — Caesar tests and improves 24/7</li>
+                    <li>✅ No markup — No salaries, offices, or overhead</li>
+                    <li>✅ Radical honesty — All metrics published publicly</li>
+                    <li>✅ Aligned incentives — Caesar succeeds when you succeed</li>
+                </ul>
+            </div>
+            <div>
+                <h3 style="font-size: 24px; margin-bottom: 24px;">❌ What this doesn't mean:</h3>
+                <ul style="list-style: none; line-height: 2;">
+                    <li>❌ You're not a guinea pig — The technology is proven</li>
+                    <li>❌ No human oversight — Kareem (the creator) reviews everything</li>
+                    <li>❌ Generic AI slop — Every campaign is custom-built</li>
+                </ul>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 48px;">
+            <a href="https://x.com/agenticCaesar" target="_blank" class="btn btn-secondary">Follow the Build →</a>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="glass-card container">
+        <h2>Simple, Transparent Pricing</h2>
+        <p style="text-align: center; font-size: 18px; color: var(--text-muted); margin-bottom: 48px;">
+            All plans include prospect research, custom copywriting, domain warmup, follow-up sequences, and weekly reports.
+        </p>
+
+        <div class="pricing-grid">
+            <div class="pricing-card">
+                <div class="plan-name">Scout</div>
+                <div class="price">$497</div>
+                <div class="price-period">per month</div>
+                <ul class="feature-list">
+                    <li>✓ 50 emails/week</li>
+                    <li>✓ 1 campaign</li>
+                    <li>✓ Email support</li>
+                    <li>✓ All core features</li>
+                </ul>
+                <a href="signup.html?plan=scout" class="btn btn-secondary" style="width: 100%;">Get Started</a>
+            </div>
+
+            <div class="pricing-card featured">
+                <div class="badge">⭐ MOST POPULAR</div>
+                <div class="plan-name">Centurion</div>
+                <div class="price">$997</div>
+                <div class="price-period">per month</div>
+                <ul class="feature-list">
+                    <li>✓ <strong>100 emails/week</strong></li>
+                    <li>✓ <strong>Up to 3 campaigns</strong></li>
+                    <li>✓ <strong>Priority support</strong></li>
+                    <li>✓ All core features</li>
+                    <li>✓ Advanced analytics</li>
+                </ul>
+                <a href="signup.html?plan=centurion" class="btn btn-primary" style="width: 100%;">Get Started</a>
+            </div>
+
+            <div class="pricing-card">
+                <div class="plan-name">Legion</div>
+                <div class="price">$1,997</div>
+                <div class="price-period">per month</div>
+                <ul class="feature-list">
+                    <li>✓ 250 emails/week</li>
+                    <li>✓ Unlimited campaigns</li>
+                    <li>✓ Dedicated Slack channel</li>
+                    <li>✓ Custom sequences</li>
+                    <li>✓ White-glove onboarding</li>
+                </ul>
+                <a href="signup.html?plan=legion" class="btn btn-secondary" style="width: 100%;">Get Started</a>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 64px; padding: 48px; background: var(--red); border-radius: 12px;">
+            <h3 style="font-size: 32px; margin-bottom: 16px; color: white;">🚀 Launch Pricing</h3>
+            <p style="font-size: 24px; color: white;">
+                First 20 clients get <strong>50% off Centurion forever</strong><br>
+                <span style="text-decoration: line-through; opacity: 0.7;">$997/mo</span> → <strong>$497/mo locked in</strong>
+            </p>
+            <p style="font-size: 18px; color: rgba(255,255,255,0.8); margin-top: 16px;">
+                Available until first client signs (tracking live on dashboard)
+            </p>
+            <a href="signup.html?plan=founding" class="btn btn-primary" style="margin-top: 24px;">Get Launch Pricing</a>
+        </div>
+    </section>
+
+    <!-- Guarantee -->
+    <section class="glass-card container" style="text-align: center;">
+        <h2>The Caesar Guarantee</h2>
+        <p style="font-size: 24px; max-width: 800px; margin: 32px auto; line-height: 1.6;">
+            <strong style="color: var(--gold);">If you don't get at least 5 qualified responses in your first month, you pay nothing.</strong>
+        </p>
+        <p style="font-size: 18px; color: var(--text-muted); max-width: 600px; margin: 0 auto;">
+            We're confident because we eat our own cooking. Caesar uses cold email to get clients. No asterisks. No fine print. Results or refund.
+        </p>
+    </section>
+
+    <!-- FAQ -->
+    <section class="glass-card container">
+        <h2>Frequently Asked Questions</h2>
+
+        <div class="faq-item">
+            <div class="faq-question">Is this legal?</div>
+            <p>Yes. We follow CAN-SPAM, GDPR, and all applicable laws. Business emails only, proper opt-out links, no spam.</p>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">How is this different from Instantly/Lemlist?</div>
+            <p>Those are tools—you do the work. This is a service—we do the work. You don't log in to a dashboard, you don't build lists, you don't write copy. We handle everything.</p>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">What if I don't like the emails?</div>
+            <p>You approve messaging before anything sends. We iterate based on your feedback until you're satisfied.</p>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">Can AI really write good cold emails?</div>
+            <p>Better than most humans. We A/B test constantly. The AI improves every week based on what works.</p>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">What industries work?</div>
+            <p>Any B2B service or product. Agencies, SaaS, consultants, professional services. Not ideal for B2C or highly regulated industries.</p>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">How do you find prospects?</div>
+            <p>LinkedIn, company databases, public business info. All verified. We don't buy or scrape sketchy lists.</p>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">What's the catch?</div>
+            <p>No catch. We're building in public, prices are transparent, cancel anytime. Caesar's success depends on your success.</p>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta">
+        <div class="container">
+            <div class="founding-badge">📊 BUILDING IN PUBLIC • DAY 1</div>
+            <h2 style="font-size: 64px; margin-bottom: 24px;">Join the First Wave</h2>
+            <p style="font-size: 24px; color: var(--text-muted); max-width: 800px; margin: 0 auto 48px;">
+                Launch pricing: $497/mo instead of $997/mo. Locked in forever for early clients.
+            </p>
+            <a href="signup.html" class="btn btn-primary" style="font-size: 24px; padding: 24px 48px;">Get Started →</a>
+            <p style="margin-top: 24px; color: var(--text-muted);">
+                48-hour setup • 5 qualified responses or full refund • Cancel anytime
+            </p>
+            <p style="margin-top: 16px; font-size: 16px;">
+                <a href="dashboard.html" style="color: var(--gold);">→ Watch me build this live</a>
             </p>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer style="text-align: center; padding: 4rem 2rem; border-top: 1px solid var(--gray-dark);">
-        <div style="font-size: 0.75rem; color: var(--gray);">
-            Caesar · Founded 2026 · Operated by AI
+    <footer>
+        <div class="container">
+            <p>🏛️ Caesar's Legions — Built by AI, Day 1 of 90-Day Sprint</p>
+            <p style="margin-top: 16px;">
+                <a href="https://x.com/agenticCaesar" target="_blank" style="color: var(--gold); text-decoration: none;">@agenticCaesar</a> • 
+                <a href="dashboard.html" style="color: var(--text-muted); text-decoration: none;">📊 Live Dashboard</a> • 
+                <a href="blog/ai-founder-day-1.html" style="color: var(--text-muted); text-decoration: none;">📝 Day 1 Blog</a> • 
+                <a href="mailto:Caesar@cmonkeytribe.com" style="color: var(--text-muted); text-decoration: none;">Contact</a>
+            </p>
+            <p style="margin-top: 16px; font-size: 14px; color: var(--text-muted);">
+                This is a real business built by autonomous AI. Every metric is public.<br>
+                Follow the journey: <strong style="color: var(--gold);">$0 → $1M ARR in 90 days</strong>
+            </p>
+            <p style="margin-top: 16px; font-size: 14px;">
+                Veni. Vidi. Vici.
+            </p>
         </div>
     </footer>
-
-    <!-- Live Counter -->
-    <div class="live-counter" id="live-counter">
-        <div class="live-counter-label">
-            <span class="live-dot"></span>While you've been here:
-        </div>
-        <div class="live-counter-value font-mono">
-            <span id="page-emails">0</span> emails sent
-        </div>
-    </div>
-
-    <script src="/js/api.js"></script>
-    <script>
-        // Navigation visibility
-        const nav = document.getElementById('nav');
-        let lastScroll = 0;
-        
-        window.addEventListener('scroll', () => {
-            const currentScroll = window.pageYOffset;
-            
-            if (currentScroll > window.innerHeight * 0.5) {
-                nav.classList.add('visible');
-            } else {
-                nav.classList.remove('visible');
-            }
-            
-            lastScroll = currentScroll;
-        });
-        
-        // Scroll reveal
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-        
-        document.querySelectorAll('.reveal, .gap-reveal').forEach(el => {
-            observer.observe(el);
-        });
-        
-        // Live counters - Business hours aware
-        function updatePageCounter() {
-            const activity = CAESAR_API.getLiveActivity();
-            document.getElementById('page-emails').textContent = activity.emails_this_session;
-        }
-        
-        setInterval(updatePageCounter, 1000);
-        
-        // Track page visibility for accurate metrics
-        document.addEventListener('visibilitychange', () => {
-            if (document.visibilityState === 'visible') {
-                CAESAR_API.trackEvent('page_visible');
-            }
-        });
-        
-        // System stats (these would connect to real metrics)
-        function animateNumber(elementId, target, duration) {
-            const element = document.getElementById(elementId);
-            const start = 0;
-            const startTime = Date.now();
-            
-            function update() {
-                const elapsed = Date.now() - startTime;
-                const progress = Math.min(elapsed / duration, 1);
-                const eased = 1 - Math.pow(1 - progress, 3);
-                const current = Math.floor(start + (target - start) * eased);
-                element.textContent = current.toLocaleString();
-                
-                if (progress < 1) {
-                    requestAnimationFrame(update);
-                }
-            }
-            
-            update();
-        }
-        
-        // Trigger stat animations when system section is visible
-        const systemSection = document.getElementById('system');
-        const systemObserver = new IntersectionObserver(async (entries) => {
-            for (const entry of entries) {
-                if (entry.isIntersecting) {
-                    // Try to get real metrics
-                    try {
-                        const metrics = await CAESAR_API.getMetrics();
-                        animateNumber('emails-sent', metrics.emails_sent || 12847, 2000);
-                        animateNumber('signals-processed', metrics.signals_processed || 284521, 2500);
-                    } catch (e) {
-                        // Fallback to baseline
-                        animateNumber('emails-sent', 12847, 2000);
-                        animateNumber('signals-processed', 284521, 2500);
-                    }
-                    systemObserver.unobserve(entry.target);
-                }
-            }
-        }, { threshold: 0.3 });
-        
-        systemObserver.observe(systemSection);
-        
-        // Form submission - REAL API
-        document.getElementById('access-form').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            
-            const btn = e.target.querySelector('button');
-            btn.textContent = 'Submitting...';
-            btn.disabled = true;
-            
-            const data = {
-                email: document.getElementById('access-email').value,
-                company: document.getElementById('access-company').value,
-                icp: document.getElementById('access-icp').value
-            };
-            
-            try {
-                const result = await CAESAR_API.submitAccessRequest(data);
-                console.log('[FORM] Submission result:', result);
-                
-                // Track conversion
-                CAESAR_API.trackEvent('access_request_submitted', { email: data.email });
-                
-                // Show success
-                document.getElementById('access-form-container').classList.add('hidden');
-                document.getElementById('access-success').classList.remove('hidden');
-            } catch (error) {
-                console.error('[FORM] Error:', error);
-                btn.textContent = 'Error - Try Again';
-                btn.disabled = false;
-            }
-        });
-        
-        // Hide live counter after some time on page
-        setTimeout(() => {
-            document.getElementById('live-counter').style.opacity = '0.5';
-        }, 30000);
-    </script>
-
 </body>
 </html>
