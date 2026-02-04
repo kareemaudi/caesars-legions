@@ -7,6 +7,20 @@
     <meta name="description" content="Done-for-you cold email that actually works. 100 personalized emails/week, AI-researched prospects, guaranteed responses. $497/mo for founding clients.">
     
     <!-- Preload fonts -->
+    <!-- Google tag (gtag.js) - GA4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PLACEHOLDER"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-PLACEHOLDER');
+      
+      // Custom events per analytics-tracking skill
+      function trackEvent(eventName, params) {
+        gtag('event', eventName, params);
+      }
+    </script>
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -887,13 +901,13 @@
                 </p>
                 
                 <div class="hero-cta">
-                    <a href="signup.html" class="btn btn-primary">
+                    <a href="signup.html" class="btn btn-primary" onclick="trackEvent('cta_clicked', {location: 'hero', button: 'founding_spot'})">
                         Claim Founding Spot — $497/mo
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M5 12h14M12 5l7 7-7 7"/>
                         </svg>
                     </a>
-                    <a href="#how-it-works" class="btn btn-secondary">
+                    <a href="#how-it-works" class="btn btn-secondary" onclick="trackEvent('cta_clicked', {location: 'hero', button: 'how_it_works'})">
                         See How It Works
                     </a>
                 </div>
@@ -1115,7 +1129,7 @@
                             Email support
                         </li>
                     </ul>
-                    <a href="signup.html?plan=scout" class="btn btn-secondary">Get Started</a>
+                    <a href="signup.html?plan=scout" class="btn btn-secondary" onclick="trackEvent('pricing_clicked', {plan: 'scout', price: 497})">Get Started</a>
                 </div>
                 
                 <div class="pricing-card featured">
@@ -1149,7 +1163,7 @@
                             Priority support
                         </li>
                     </ul>
-                    <a href="signup.html?plan=centurion" class="btn btn-primary">Get Started</a>
+                    <a href="signup.html?plan=centurion" class="btn btn-primary" onclick="trackEvent('pricing_clicked', {plan: 'centurion', price: 997})">Get Started</a>
                 </div>
                 
                 <div class="pricing-card">
@@ -1182,7 +1196,7 @@
                             White-glove onboarding
                         </li>
                     </ul>
-                    <a href="signup.html?plan=legion" class="btn btn-secondary">Get Started</a>
+                    <a href="signup.html?plan=legion" class="btn btn-secondary" onclick="trackEvent('pricing_clicked', {plan: 'legion', price: 1997})">Get Started</a>
                 </div>
             </div>
             
