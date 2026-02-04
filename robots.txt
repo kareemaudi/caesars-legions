@@ -5,7 +5,7 @@ Allow: /
 Crawl-delay: 1
 
 # Sitemap
-Sitemap: https://promptabusiness.com/sitemap.xml
+Sitemap: https://caesarslegions.com/sitemap.xml
 
 # Social media crawlers - always allow
 User-agent: Twitterbot
@@ -17,4 +17,4 @@ Allow: /
 User-agent: LinkedInBot
 Allow: /
 
-# Last rebuild: 2026-02-03 21:18
+# Last updated: 2026-02-04
