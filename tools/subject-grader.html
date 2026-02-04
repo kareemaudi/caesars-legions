@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cold Email Subject Line Grader | Caesar's Legions</title>
+  <meta name="description" content="Free tool to grade your cold email subject lines. Get instant feedback on length, spam triggers, and personalization.">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --gold: #D4AF37;
+      --bg: #0a0a0a;
+      --card: #111;
+      --border: rgba(212, 175, 55, 0.2);
+      --text: #e8e8e8;
+      --text-muted: #888;
+      --green: #22c55e;
+      --yellow: #eab308;
+      --red: #ef4444;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle at 30% 20%, rgba(139, 0, 0, 0.12) 0%, transparent 50%);
+      z-index: -1;
+    }
+    .container {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 60px 24px;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .logo {
+      font-size: 20px;
+      color: var(--gold);
+      font-weight: 700;
+      margin-bottom: 24px;
+    }
+    h1 {
+      font-size: 36px;
+      font-weight: 800;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, #fff 0%, var(--gold) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .subtitle { font-size: 18px; color: var(--text-muted); }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px;
+      margin-bottom: 24px;
+    }
+    label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 16px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px;
+      font-size: 18px;
+      color: var(--text);
+      font-family: inherit;
+    }
+    input:focus { outline: none; border-color: var(--gold); }
+    .btn {
+      width: 100%;
+      padding: 16px;
+      background: linear-gradient(135deg, var(--gold) 0%, #B8952E 100%);
+      color: #000;
+      font-weight: 700;
+      font-size: 16px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-top: 16px;
+    }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(212, 175, 55, 0.3); }
+    .results { display: none; }
+    .results.show { display: block; }
+    .grade-display {
+      text-align: center;
+      padding: 32px;
+      border-radius: 12px;
+      margin-bottom: 24px;
+    }
+    .grade-display.a { background: rgba(34, 197, 94, 0.15); border: 1px solid var(--green); }
+    .grade-display.b { background: rgba(234, 179, 8, 0.15); border: 1px solid var(--yellow); }
+    .grade-display.c { background: rgba(239, 68, 68, 0.15); border: 1px solid var(--red); }
+    .grade-letter {
+      font-size: 72px;
+      font-weight: 800;
+    }
+    .grade-display.a .grade-letter { color: var(--green); }
+    .grade-display.b .grade-letter { color: var(--yellow); }
+    .grade-display.c .grade-letter { color: var(--red); }
+    .grade-text { font-size: 18px; margin-top: 8px; }
+    .feedback-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 16px;
+      background: rgba(255,255,255,0.02);
+      border-radius: 10px;
+      margin-bottom: 12px;
+    }
+    .feedback-icon { font-size: 20px; }
+    .feedback-text strong { display: block; margin-bottom: 4px; }
+    .feedback-text span { font-size: 14px; color: var(--text-muted); }
+    .cta-box {
+      text-align: center;
+      padding: 32px;
+      background: rgba(212, 175, 55, 0.1);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      margin-top: 32px;
+    }
+    .cta-box p { margin-bottom: 16px; }
+    .cta-box a {
+      display: inline-block;
+      padding: 14px 28px;
+      background: var(--gold);
+      color: #000;
+      font-weight: 700;
+      border-radius: 8px;
+      text-decoration: none;
+    }
+    footer {
+      text-align: center;
+      margin-top: 48px;
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+    footer a { color: var(--gold); text-decoration: none; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo">🏛️ Caesar's Legions</div>
+      <h1>Subject Line Grader</h1>
+      <p class="subtitle">Get instant feedback on your cold email subject lines</p>
+    </header>
+    
+    <div class="card">
+      <label for="subject">Enter your subject line:</label>
+      <input type="text" id="subject" placeholder="e.g., Quick question about [Company]" maxlength="100">
+      <button class="btn" onclick="gradeSubject()">Grade My Subject Line</button>
+    </div>
+    
+    <div class="results" id="results">
+      <div class="grade-display" id="gradeDisplay">
+        <div class="grade-letter" id="gradeLetter">B</div>
+        <div class="grade-text" id="gradeText">Good, but could be better</div>
+      </div>
+      
+      <div class="card">
+        <h3 style="margin-bottom: 16px;">📋 Feedback</h3>
+        <div id="feedbackList"></div>
+      </div>
+      
+      <div class="cta-box">
+        <p>Want subject lines that actually get opened?</p>
+        <a href="/signup.html">Let Caesar Write Them →</a>
+      </div>
+    </div>
+    
+    <footer>
+      <a href="/">← Back to Home</a> · <a href="/tools/roi-calculator.html">ROI Calculator</a>
+    </footer>
+  </div>
+  
+  <script>
+    const spamWords = ['free', 'guaranteed', 'act now', 'limited time', 'urgent', 'winner', 'congratulations', 'click here', 'buy now', 'order now', 'discount', 'sale', 'offer', 'deal', 'cash', 'money', 'earn', 'income', 'profit', 'double your', 'million', 'billion'];
+    const goodStarters = ['quick question', 'thoughts on', 'idea for', 'noticed', 'loved your', 'congrats on', 're:', 'following up'];
+    const personalizationTokens = ['{{', '{first', '[company', '[name', 'your'];
+    
+    function gradeSubject() {
+      const subject = document.getElementById('subject').value.trim();
+      if (!subject) return alert('Please enter a subject line');
+      
+      let score = 70;
+      const feedback = [];
+      const lower = subject.toLowerCase();
+      
+      // Length check
+      if (subject.length < 20) {
+        score += 10;
+        feedback.push({icon: '✅', title: 'Great length', text: 'Short subject lines (under 20 chars) have higher open rates'});
+      } else if (subject.length > 50) {
+        score -= 15;
+        feedback.push({icon: '⚠️', title: 'Too long', text: 'Subject lines over 50 chars get cut off on mobile. Aim for under 40.'});
+      } else if (subject.length <= 40) {
+        score += 5;
+        feedback.push({icon: '✅', title: 'Good length', text: 'Under 40 characters is ideal for mobile'});
+      }
+      
+      // Spam words
+      const foundSpam = spamWords.filter(w => lower.includes(w));
+      if (foundSpam.length > 0) {
+        score -= foundSpam.length * 10;
+        feedback.push({icon: '🚫', title: 'Spam triggers detected', text: `"${foundSpam.join('", "')}" may trigger spam filters`});
+      } else {
+        score += 5;
+        feedback.push({icon: '✅', title: 'No spam triggers', text: 'Clean of common spam words'});
+      }
+      
+      // Personalization
+      const hasPersonalization = personalizationTokens.some(t => lower.includes(t));
+      if (hasPersonalization) {
+        score += 15;
+        feedback.push({icon: '✅', title: 'Personalization detected', text: 'Personalized subject lines have 26% higher open rates'});
+      } else {
+        score -= 5;
+        feedback.push({icon: '💡', title: 'Add personalization', text: 'Try adding [Company] or [First Name] for better results'});
+      }
+      
+      // Good starters
+      const hasGoodStart = goodStarters.some(s => lower.startsWith(s));
+      if (hasGoodStart) {
+        score += 10;
+        feedback.push({icon: '✅', title: 'Strong opener', text: 'Starts with a pattern that drives curiosity'});
+      }
+      
+      // All caps check
+      if (subject === subject.toUpperCase() && subject.length > 3) {
+        score -= 20;
+        feedback.push({icon: '🚫', title: 'All caps detected', text: 'ALL CAPS looks spammy and aggressive'});
+      }
+      
+      // Exclamation marks
+      const exclamations = (subject.match(/!/g) || []).length;
+      if (exclamations > 1) {
+        score -= 10;
+        feedback.push({icon: '⚠️', title: 'Too many exclamation marks', text: 'Multiple ! looks unprofessional'});
+      }
+      
+      // Question mark (good for engagement)
+      if (subject.includes('?')) {
+        score += 5;
+        feedback.push({icon: '✅', title: 'Question format', text: 'Questions drive curiosity and engagement'});
+      }
+      
+      // Normalize score
+      score = Math.max(0, Math.min(100, score));
+      
+      // Determine grade
+      let grade, gradeText, gradeClass;
+      if (score >= 80) {
+        grade = 'A'; gradeText = 'Excellent! Ready to send.'; gradeClass = 'a';
+      } else if (score >= 60) {
+        grade = 'B'; gradeText = 'Good, but could be improved.'; gradeClass = 'b';
+      } else {
+        grade = 'C'; gradeText = 'Needs work before sending.'; gradeClass = 'c';
+      }
+      
+      // Display results
+      document.getElementById('results').classList.add('show');
+      document.getElementById('gradeDisplay').className = 'grade-display ' + gradeClass;
+      document.getElementById('gradeLetter').textContent = grade;
+      document.getElementById('gradeText').textContent = gradeText;
+      
+      document.getElementById('feedbackList').innerHTML = feedback.map(f => 
+        `<div class="feedback-item">
+          <span class="feedback-icon">${f.icon}</span>
+          <div class="feedback-text"><strong>${f.title}</strong><span>${f.text}</span></div>
+        </div>`
+      ).join('');
+    }
+    
+    document.getElementById('subject').addEventListener('keypress', e => {
+      if (e.key === 'Enter') gradeSubject();
+    });
+  </script>
+</body>
+</html>

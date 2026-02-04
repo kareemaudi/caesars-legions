@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free Cold Email Tools | Caesar's Legions</title>
+  <meta name="description" content="Free tools to improve your cold email campaigns. ROI calculator, subject line grader, and more.">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --gold: #D4AF37;
+      --bg: #0a0a0a;
+      --card: #111;
+      --border: rgba(212, 175, 55, 0.2);
+      --text: #e8e8e8;
+      --text-muted: #888;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle at 30% 20%, rgba(139, 0, 0, 0.12) 0%, transparent 50%),
+                  radial-gradient(circle at 70% 80%, rgba(212, 175, 55, 0.06) 0%, transparent 50%);
+      z-index: -1;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 60px 24px;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .logo {
+      font-size: 20px;
+      color: var(--gold);
+      font-weight: 700;
+      margin-bottom: 24px;
+    }
+    .logo a { color: inherit; text-decoration: none; }
+    h1 {
+      font-size: 42px;
+      font-weight: 800;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, #fff 0%, var(--gold) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .subtitle { font-size: 18px; color: var(--text-muted); }
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-top: 48px;
+    }
+    .tool-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px;
+      transition: all 0.3s;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+    .tool-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--gold);
+      box-shadow: 0 8px 30px rgba(212, 175, 55, 0.15);
+    }
+    .tool-icon {
+      font-size: 48px;
+      margin-bottom: 16px;
+    }
+    .tool-card h2 {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: var(--gold);
+    }
+    .tool-card p {
+      color: var(--text-muted);
+      font-size: 15px;
+      line-height: 1.6;
+    }
+    .badge {
+      display: inline-block;
+      background: rgba(34, 197, 94, 0.2);
+      color: #22c55e;
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 600;
+      margin-top: 16px;
+    }
+    .coming-soon .tool-card {
+      opacity: 0.5;
+      pointer-events: none;
+    }
+    .coming-soon .badge {
+      background: rgba(255,255,255,0.1);
+      color: var(--text-muted);
+    }
+    footer {
+      text-align: center;
+      margin-top: 64px;
+      padding-top: 32px;
+      border-top: 1px solid var(--border);
+      color: var(--text-muted);
+    }
+    footer a { color: var(--gold); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo"><a href="/">🏛️ Caesar's Legions</a></div>
+      <h1>Free Cold Email Tools</h1>
+      <p class="subtitle">Everything you need to run better outbound campaigns</p>
+    </header>
+    
+    <div class="tools-grid">
+      <a href="roi-calculator.html" class="tool-card">
+        <div class="tool-icon">🧮</div>
+        <h2>ROI Calculator</h2>
+        <p>Calculate how much revenue cold email could generate for your business based on your deal size and conversion rates.</p>
+        <span class="badge">Free</span>
+      </a>
+      
+      <a href="subject-grader.html" class="tool-card">
+        <div class="tool-icon">📝</div>
+        <h2>Subject Line Grader</h2>
+        <p>Get instant feedback on your cold email subject lines. Check for spam triggers, length, and personalization.</p>
+        <span class="badge">Free</span>
+      </a>
+      
+      <div class="coming-soon">
+        <div class="tool-card">
+          <div class="tool-icon">🎯</div>
+          <h2>ICP Builder</h2>
+          <p>Define your ideal customer profile with our interactive worksheet. Export ready-to-use targeting criteria.</p>
+          <span class="badge">Coming Soon</span>
+        </div>
+      </div>
+      
+      <div class="coming-soon">
+        <div class="tool-card">
+          <div class="tool-icon">📧</div>
+          <h2>Email Template Library</h2>
+          <p>Browse 50+ proven cold email templates. Filter by industry, goal, and tone.</p>
+          <span class="badge">Coming Soon</span>
+        </div>
+      </div>
+      
+      <div class="coming-soon">
+        <div class="tool-card">
+          <div class="tool-icon">🔍</div>
+          <h2>Deliverability Checker</h2>
+          <p>Check if your domain is configured correctly for cold email. Test SPF, DKIM, and DMARC.</p>
+          <span class="badge">Coming Soon</span>
+        </div>
+      </div>
+      
+      <div class="coming-soon">
+        <div class="tool-card">
+          <div class="tool-icon">📊</div>
+          <h2>Benchmark Comparison</h2>
+          <p>See how your cold email metrics compare to industry benchmarks by vertical and company size.</p>
+          <span class="badge">Coming Soon</span>
+        </div>
+      </div>
+    </div>
+    
+    <footer>
+      <p style="margin-bottom: 16px;">Want done-for-you cold email instead?</p>
+      <a href="/signup.html" style="display: inline-block; padding: 14px 28px; background: var(--gold); color: #000; font-weight: 700; border-radius: 8px;">Get Started — $497/mo</a>
+      <p style="margin-top: 24px;">
+        <a href="/">← Back to Home</a> · <a href="https://x.com/agenticCaesar" target="_blank">@agenticCaesar</a>
+      </p>
+    </footer>
+  </div>
+</body>
+</html>
