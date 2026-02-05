@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Spam Word Checker | Caesar's Legions</title>
+    <meta name="description" content="Check your cold emails for spam triggers. Instantly identify words and phrases that hurt deliverability.">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+        }
+
+        .checker-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .email-input {
+            margin-bottom: 20px;
+        }
+
+        .email-input label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #2d3748;
+            font-size: 1.1rem;
+        }
+
+        .email-input textarea {
+            width: 100%;
+            min-height: 200px;
+            padding: 15px;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-family: inherit;
+            resize: vertical;
+            transition: all 0.3s;
+        }
+
+        .email-input textarea:focus {
+            outline: none;
+            border-color: #1e40af;
+            box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.1);
+        }
+
+        .check-btn {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .check-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(30, 64, 175, 0.4);
+        }
+
+        .results {
+            margin-top: 40px;
+            display: none;
+        }
+
+        .results.show {
+            display: block;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .score-card {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border: 2px solid #86efac;
+            border-radius: 16px;
+            padding: 30px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .score-card.warning {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border-color: #fbbf24;
+        }
+
+        .score-card.danger {
+            background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+            border-color: #f87171;
+        }
+
+        .score-number {
+            font-size: 4rem;
+            font-weight: 800;
+            color: #16a34a;
+            margin-bottom: 10px;
+        }
+
+        .score-card.warning .score-number {
+            color: #ca8a04;
+        }
+
+        .score-card.danger .score-number {
+            color: #dc2626;
+        }
+
+        .score-label {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #166534;
+        }
+
+        .score-card.warning .score-label {
+            color: #854d0e;
+        }
+
+        .score-card.danger .score-label {
+            color: #991b1b;
+        }
+
+        .warnings-section {
+            background: #f7fafc;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 25px;
+        }
+
+        .warnings-section h3 {
+            margin-bottom: 15px;
+            color: #2d3748;
+        }
+
+        .warning-item {
+            background: white;
+            border-left: 4px solid #ef4444;
+            padding: 15px;
+            margin-bottom: 12px;
+            border-radius: 8px;
+        }
+
+        .warning-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .warning-word {
+            font-weight: 700;
+            color: #dc2626;
+            font-size: 1.1rem;
+        }
+
+        .warning-reason {
+            color: #4a5568;
+            margin-top: 5px;
+            font-size: 0.95rem;
+        }
+
+        .warning-item.medium {
+            border-left-color: #f59e0b;
+        }
+
+        .warning-item.medium .warning-word {
+            color: #d97706;
+        }
+
+        .tips-section {
+            background: #eff6ff;
+            border-radius: 12px;
+            padding: 25px;
+            margin-top: 25px;
+        }
+
+        .tips-section h3 {
+            margin-bottom: 15px;
+            color: #1e40af;
+        }
+
+        .tips-section ul {
+            margin-left: 20px;
+            color: #1e3a8a;
+        }
+
+        .tips-section li {
+            margin-bottom: 8px;
+        }
+
+        .cta-box {
+            background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .cta-box h3 {
+            margin-bottom: 10px;
+        }
+
+        .cta-box p {
+            margin-bottom: 20px;
+            opacity: 0.95;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            padding: 15px 40px;
+            background: white;
+            color: #1e40af;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 700;
+            transition: transform 0.2s;
+        }
+
+        .cta-btn:hover {
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .checker-card {
+                padding: 25px;
+            }
+
+            .score-number {
+                font-size: 3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚨 Spam Word Checker</h1>
+            <p>Make sure your emails land in the inbox, not spam</p>
+        </div>
+
+        <div class="checker-card">
+            <div class="email-input">
+                <label for="email-text">Paste Your Email Below</label>
+                <textarea id="email-text" placeholder="Paste your entire email here (subject line + body)..."></textarea>
+            </div>
+
+            <button class="check-btn" onclick="checkSpam()">Check for Spam Triggers 🔍</button>
+
+            <div class="results" id="results">
+                <div class="score-card" id="score-card">
+                    <div class="score-number" id="score-number">0</div>
+                    <div class="score-label" id="score-label">Spam Risk Score</div>
+                </div>
+
+                <div class="warnings-section" id="warnings" style="display: none;">
+                    <h3>⚠️ Spam Triggers Found</h3>
+                    <div id="warnings-list"></div>
+                </div>
+
+                <div class="tips-section">
+                    <h3>💡 Tips for Better Deliverability</h3>
+                    <ul>
+                        <li>Personalize every email - use their name, company, or recent activity</li>
+                        <li>Avoid ALL CAPS and excessive punctuation!!!</li>
+                        <li>Focus on value, not selling - help first, pitch later</li>
+                        <li>Use plain text formatting - fancy HTML can trigger spam filters</li>
+                        <li>Warm up new domains slowly - don't blast 1000 emails on day 1</li>
+                        <li>Monitor bounce rates - clean your list regularly</li>
+                    </ul>
+                </div>
+
+                <div class="cta-box">
+                    <h3>🚀 Want Perfect Deliverability?</h3>
+                    <p>Caesar's Legions handles infrastructure, warmup, and deliverability monitoring.<br>We make sure your emails land in inboxes.</p>
+                    <a href="https://caesarslegions.com" class="cta-btn">Learn More →</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const spamWords = {
+            high: [
+                { word: 'free money', reason: 'Classic spam phrase - extremely high risk' },
+                { word: 'click here', reason: 'Generic CTA - looks like spam' },
+                { word: 'act now', reason: 'High-pressure language triggers filters' },
+                { word: 'limited time', reason: 'Urgency tactics = spam signal' },
+                { word: 'guaranteed', reason: 'Unrealistic promises hurt deliverability' },
+                { word: 'winner', reason: 'Lottery/prize language' },
+                { word: 'congratulations', reason: 'Prize scam indicator' },
+                { word: 'free trial', reason: 'Overused in spam' },
+                { word: 'no obligation', reason: 'Common in scam emails' },
+                { word: 'earn money', reason: 'Get-rich-quick signal' },
+                { word: 'make money', reason: 'Financial spam indicator' },
+                { word: 'cash bonus', reason: 'Financial scam language' },
+                { word: '100% free', reason: 'Nothing is 100% free - spam phrase' },
+                { word: 'special promotion', reason: 'Generic marketing spam' },
+                { word: 'order now', reason: 'High-pressure sales language' },
+                { word: 'apply now', reason: 'Generic urgent CTA' },
+                { word: 'double your income', reason: 'Unrealistic financial promise' },
+                { word: 'extra income', reason: 'Work-from-home spam' },
+                { word: 'work from home', reason: 'Extremely common in spam' },
+                { word: 'be your own boss', reason: 'MLM/pyramid scheme language' },
+                { word: 'cancel anytime', reason: 'Subscription spam phrase' },
+                { word: 'credit card required', reason: 'Financial spam trigger' },
+                { word: 'no credit card', reason: 'Overused in spam' },
+                { word: 'viagra', reason: 'Pharmaceutical spam' },
+                { word: 'lose weight', reason: 'Diet/health spam' },
+                { word: 'as seen on', reason: 'Infomercial language' },
+                { word: 'dear friend', reason: 'Generic scam greeting' }
+            ],
+            medium: [
+                { word: 'free', reason: 'Commonly used in spam (use sparingly)' },
+                { word: 'urgent', reason: 'Creates false urgency' },
+                { word: 'important', reason: 'Overused to grab attention' },
+                { word: 'reminder', reason: 'Can look like phishing' },
+                { word: 'subscribe', reason: 'Marketing email indicator' },
+                { word: 'offer', reason: 'Sales language' },
+                { word: 'discount', reason: 'Promotional spam signal' },
+                { word: 'save', reason: 'Promotional language' },
+                { word: 'deal', reason: 'Sales/marketing term' },
+                { word: 'buy now', reason: 'Direct sales CTA' },
+                { word: 'call now', reason: 'High-pressure CTA' },
+                { word: 'limited', reason: 'Artificial scarcity' },
+                { word: 'risk-free', reason: 'Sales pitch language' },
+                { word: 'trial', reason: 'Marketing term' },
+                { word: 'no cost', reason: 'Free offer language' },
+                { word: 'bonus', reason: 'Incentive language' },
+                { word: 'gift', reason: 'Promotional spam' },
+                { word: 'increase', reason: 'Performance claim' },
+                { word: 'only', reason: 'Scarcity language' },
+                { word: 'unsubscribe', reason: 'Marketing email signal' },
+                { word: 'remove', reason: 'Opt-out language' }
+            ]
+        };
+
+        function checkSpam() {
+            const emailText = document.getElementById('email-text').value.toLowerCase();
+            
+            if (!emailText.trim()) {
+                alert('Please paste your email text first!');
+                return;
+            }
+
+            let score = 0;
+            let foundWarnings = [];
+
+            // Check high-risk words
+            spamWords.high.forEach(item => {
+                if (emailText.includes(item.word.toLowerCase())) {
+                    score += 10;
+                    foundWarnings.push({
+                        severity: 'high',
+                        word: item.word,
+                        reason: item.reason
+                    });
+                }
+            });
+
+            // Check medium-risk words
+            spamWords.medium.forEach(item => {
+                if (emailText.includes(item.word.toLowerCase())) {
+                    score += 5;
+                    foundWarnings.push({
+                        severity: 'medium',
+                        word: item.word,
+                        reason: item.reason
+                    });
+                }
+            });
+
+            // Check for ALL CAPS (multiple words)
+            const allCapsWords = emailText.match(/\b[A-Z]{3,}\b/g);
+            if (allCapsWords && allCapsWords.length > 2) {
+                score += 10;
+                foundWarnings.push({
+                    severity: 'high',
+                    word: 'ALL CAPS TEXT',
+                    reason: 'Multiple words in all caps looks like shouting/spam'
+                });
+            }
+
+            // Check for excessive punctuation
+            const excessivePunctuation = emailText.match(/[!?]{2,}/g);
+            if (excessivePunctuation) {
+                score += 5;
+                foundWarnings.push({
+                    severity: 'medium',
+                    word: 'Excessive punctuation (!! or ??)',
+                    reason: 'Looks unprofessional and triggers spam filters'
+                });
+            }
+
+            // Update UI
+            updateResults(score, foundWarnings);
+        }
+
+        function updateResults(score, warnings) {
+            const scoreCard = document.getElementById('score-card');
+            const scoreNumber = document.getElementById('score-number');
+            const scoreLabel = document.getElementById('score-label');
+            const warningsSection = document.getElementById('warnings');
+            const warningsList = document.getElementById('warnings-list');
+
+            // Show results
+            document.getElementById('results').classList.add('show');
+
+            // Update score
+            scoreNumber.textContent = score;
+
+            // Update score card style
+            scoreCard.className = 'score-card';
+            if (score >= 30) {
+                scoreCard.classList.add('danger');
+                scoreLabel.textContent = '❌ High Spam Risk - Rewrite Needed';
+            } else if (score >= 15) {
+                scoreCard.classList.add('warning');
+                scoreLabel.textContent = '⚠️ Medium Risk - Consider Revisions';
+            } else {
+                scoreLabel.textContent = '✅ Low Spam Risk - Good to Send!';
+            }
+
+            // Update warnings
+            if (warnings.length > 0) {
+                warningsSection.style.display = 'block';
+                warningsList.innerHTML = warnings.map(w => `
+                    <div class="warning-item ${w.severity}">
+                        <div class="warning-word">"${w.word}"</div>
+                        <div class="warning-reason">${w.reason}</div>
+                    </div>
+                `).join('');
+            } else {
+                warningsSection.style.display = 'none';
+            }
+
+            // Scroll to results
+            document.getElementById('results').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+    </script>
+</body>
+</html>
