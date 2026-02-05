@@ -1,88 +1,53 @@
-# Deploy to GitHub Pages
+# Caesar's Legions - Deployment Guide
 
-## Quick Deploy (5 minutes)
+## ⚠️ IMPORTANT: Two Repos, Two Purposes
 
-### 1. Create GitHub Repository
+| Repo | Folder | Branch | Deploys To |
+|------|--------|--------|------------|
+| `kareemaudi/caesars-legions` | `C:/Users/Asus/clawd/caesars-legions` | **master** | **promptabusiness.com** (LIVE SITE) |
+| `kareemaudi/caesars-legions-backend` | `C:/Users/Asus/clawd/caesars-legions-backend` | gh-pages | kareemaudi.github.io (dev only) |
 
-Go to: https://github.com/new
-
-- **Repository name:** `caesars-legions`
-- **Description:** "Caesar's Legions - AI-Powered Cold Email Service"
-- **Public** (required for free GitHub Pages)
-- **DON'T** initialize with README (we already have one)
-
-Click **Create repository**
-
-### 2. Push to GitHub
-
-Copy the commands from GitHub's "…or push an existing repository from the command line" section:
+## Deploying to Live Site (promptabusiness.com)
 
 ```bash
-git remote add origin https://github.com/YOUR_USERNAME/caesars-legions.git
-git branch -M main
-git push -u origin main
+cd C:/Users/Asus/clawd/caesars-legions
+git add -A
+git commit -m "Description of changes"
+git push origin master
 ```
 
-**OR run from PowerShell in this directory:**
+**Wait 1-2 minutes for GitHub Pages to deploy.**
 
-```powershell
-cd C:\Users\Asus\clawd\caesars-legions
-git remote add origin https://github.com/YOUR_USERNAME/caesars-legions.git
-git branch -M main
-git push -u origin main
-```
+## Why Deploys Get "Cancelled"
 
-### 3. Enable GitHub Pages
+GitHub Actions cancels older workflows when a newer push happens. This is NORMAL behavior.
 
-1. Go to your repo: `https://github.com/YOUR_USERNAME/caesars-legions`
-2. Click **Settings** tab
-3. Click **Pages** in left sidebar
-4. Under "Source", select: **main** branch
-5. Click **Save**
+**If you see "Cancelled":**
+1. Check if a newer commit succeeded
+2. If not, push an empty commit to trigger fresh deploy:
+   ```bash
+   git commit --allow-empty -m "Trigger deploy"
+   git push origin master
+   ```
 
-**Done!** Your site will be live at:
-```
-https://YOUR_USERNAME.github.io/caesars-legions/
-```
+## Verifying Deployment
 
-(Takes 1-2 minutes to build)
+1. Check GitHub Actions: https://github.com/kareemaudi/caesars-legions/actions
+2. Look for green checkmark on latest commit
+3. Visit https://promptabusiness.com and hard refresh (Ctrl+Shift+R)
 
----
+## Files in This Repo
 
-## Update Site Later
+- `index.html` - Main landing page
+- `onboarding.html` - Client intake form
+- `compare/` - SEO comparison pages (Instantly, Lemlist alternatives)
+- `tools/` - Viral tools (ROI calculator, spam checker, etc.)
+- `blog/` - Build-in-public blog posts
+- `CNAME` - Points to promptabusiness.com
+- `.nojekyll` - Disables Jekyll processing
 
-Just edit `index.html`, commit, and push:
+## Do NOT
 
-```bash
-git add index.html
-git commit -m "Update landing page"
-git push
-```
-
-GitHub Pages auto-deploys in ~1 minute.
-
----
-
-## Custom Domain (Optional)
-
-To use `promptabusiness.com`:
-
-1. In GitHub repo → Settings → Pages
-2. Under "Custom domain", enter: `promptabusiness.com`
-3. Click Save
-4. In GoDaddy DNS settings, add:
-   - Type: **CNAME**
-   - Name: **www**
-   - Value: **YOUR_USERNAME.github.io**
-   
-5. Add A records pointing to GitHub:
-   - 185.199.108.153
-   - 185.199.109.153
-   - 185.199.110.153
-   - 185.199.111.153
-
-Wait 10-60 minutes for DNS propagation.
-
----
-
-**Status:** Ready to deploy! 🚀
+- Push website changes to `caesars-legions-backend`
+- Use `gh-pages` branch for this repo (use master)
+- Delete the CNAME file
