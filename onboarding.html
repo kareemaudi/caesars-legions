@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Started — Caesar's Legions</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #D4AF37;
+            --gold-light: #E5C453;
+            --gold-dark: #B8960C;
+            --bg-primary: #0A0A0F;
+            --bg-secondary: #12121A;
+            --bg-card: rgba(255, 255, 255, 0.03);
+            --border: rgba(255, 255, 255, 0.08);
+            --text-primary: #FFFFFF;
+            --text-secondary: #A0A0B0;
+            --text-muted: #6B6B7B;
+            --success: #22C55E;
+            --error: #EF4444;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        /* Background Pattern */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(ellipse 80% 50% at 50% -20%, rgba(212, 175, 55, 0.15), transparent),
+                radial-gradient(circle at 20% 80%, rgba(212, 175, 55, 0.05), transparent 40%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .header-subtitle {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            margin-bottom: 3rem;
+        }
+
+        .progress-steps {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            margin-bottom: 1rem;
+        }
+
+        .progress-steps::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--border);
+            transform: translateY(-50%);
+            z-index: 0;
+        }
+
+        .progress-line {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            height: 2px;
+            background: var(--gold);
+            transform: translateY(-50%);
+            z-index: 1;
+            transition: width 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .step-indicator {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--bg-secondary);
+            border: 2px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            position: relative;
+            z-index: 2;
+            transition: all 0.3s ease;
+        }
+
+        .step-indicator.active {
+            background: var(--gold);
+            border-color: var(--gold);
+            color: var(--bg-primary);
+        }
+
+        .step-indicator.completed {
+            background: var(--gold);
+            border-color: var(--gold);
+            color: var(--bg-primary);
+        }
+
+        .step-indicator.completed::after {
+            content: '✓';
+        }
+
+        .step-indicator.completed span {
+            display: none;
+        }
+
+        .step-labels {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .step-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-align: center;
+            width: 80px;
+            transition: color 0.3s ease;
+        }
+
+        .step-label.active {
+            color: var(--gold);
+        }
+
+        /* Form Card */
+        .form-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 2.5rem;
+            backdrop-filter: blur(20px);
+        }
+
+        .step-content {
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .step-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .step-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.75rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .step-description {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-size: 0.95rem;
+        }
+
+        /* Form Elements */
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .form-label .required {
+            color: var(--gold);
+        }
+
+        .form-hint {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 0.25rem;
+        }
+
+        .form-input,
+        .form-select,
+        .form-textarea {
+            width: 100%;
+            padding: 0.875rem 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            color: var(--text-primary);
+            font-size: 1rem;
+            font-family: inherit;
+            transition: all 0.2s ease;
+        }
+
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--gold);
+            background: rgba(212, 175, 55, 0.05);
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+        }
+
+        .form-input::placeholder,
+        .form-textarea::placeholder {
+            color: var(--text-muted);
+        }
+
+        .form-select {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%236B6B7B' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            background-size: 1rem;
+            padding-right: 2.5rem;
+        }
+
+        .form-select option {
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+        }
+
+        .form-textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        /* Radio/Checkbox Cards */
+        .option-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 1rem;
+        }
+
+        .option-card {
+            position: relative;
+        }
+
+        .option-card input {
+            position: absolute;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+            z-index: 2;
+        }
+
+        .option-card-content {
+            padding: 1.25rem;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            text-align: center;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .option-card input:checked + .option-card-content {
+            border-color: var(--gold);
+            background: rgba(212, 175, 55, 0.1);
+        }
+
+        .option-card:hover .option-card-content {
+            border-color: rgba(212, 175, 55, 0.5);
+        }
+
+        .option-card-icon {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .option-card-label {
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        /* Info Box */
+        .info-box {
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 12px;
+            padding: 1rem 1.25rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            gap: 0.75rem;
+            align-items: flex-start;
+        }
+
+        .info-box-icon {
+            color: var(--gold);
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .info-box-text {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        /* Credential Input Group */
+        .credential-group {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .credential-group-title {
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .credential-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        @media (max-width: 500px) {
+            .credential-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Buttons */
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            padding: 0.875rem 1.5rem;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            font-family: inherit;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: var(--gold);
+            color: var(--bg-primary);
+            border: none;
+            flex: 1;
+        }
+
+        .btn-primary:hover {
+            background: var(--gold-light);
+            transform: translateY(-1px);
+        }
+
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-secondary);
+            border: 1px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--text-secondary);
+            color: var(--text-primary);
+        }
+
+        /* Success State */
+        .success-content {
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(34, 197, 94, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+        }
+
+        .success-icon svg {
+            width: 40px;
+            height: 40px;
+            color: var(--success);
+        }
+
+        .success-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .success-description {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .next-steps {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: left;
+        }
+
+        .next-steps-title {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .next-step-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .next-step-number {
+            width: 24px;
+            height: 24px;
+            background: var(--gold);
+            color: var(--bg-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+
+        /* Security Badge */
+        .security-badge {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 2rem;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+
+        .security-badge svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .container {
+                padding: 1.5rem 1rem;
+            }
+            
+            .form-card {
+                padding: 1.5rem;
+            }
+
+            .step-title {
+                font-size: 1.5rem;
+            }
+
+            .step-labels {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">Caesar's Legions</div>
+            <p class="header-subtitle">Let's set up your multi-channel outbound machine</p>
+        </header>
+
+        <!-- Progress -->
+        <div class="progress-container">
+            <div class="progress-steps">
+                <div class="progress-line" id="progressLine" style="width: 0%"></div>
+                <div class="step-indicator active" data-step="1"><span>1</span></div>
+                <div class="step-indicator" data-step="2"><span>2</span></div>
+                <div class="step-indicator" data-step="3"><span>3</span></div>
+                <div class="step-indicator" data-step="4"><span>4</span></div>
+                <div class="step-indicator" data-step="5"><span>5</span></div>
+            </div>
+            <div class="step-labels">
+                <span class="step-label active">Business</span>
+                <span class="step-label">ICP</span>
+                <span class="step-label">Email</span>
+                <span class="step-label">Channels</span>
+                <span class="step-label">Confirm</span>
+            </div>
+        </div>
+
+        <!-- Form Card -->
+        <div class="form-card">
+            <form id="onboardingForm">
+                <!-- Step 1: Business Info -->
+                <div class="step-content active" data-step="1">
+                    <h2 class="step-title">Tell us about your business</h2>
+                    <p class="step-description">We'll use this to personalize your outreach and ensure deliverability.</p>
+
+                    <div class="form-group">
+                        <label class="form-label">Company Name <span class="required">*</span></label>
+                        <input type="text" class="form-input" name="companyName" placeholder="Acme Inc." required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Website URL <span class="required">*</span></label>
+                        <input type="url" class="form-input" name="website" placeholder="https://acme.com" required>
+                        <p class="form-hint">We'll scrape this to understand your positioning</p>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Industry <span class="required">*</span></label>
+                        <select class="form-select" name="industry" required>
+                            <option value="">Select your industry</option>
+                            <option value="saas">SaaS / Software</option>
+                            <option value="agency">Agency / Services</option>
+                            <option value="fintech">Fintech</option>
+                            <option value="healthcare">Healthcare</option>
+                            <option value="ecommerce">E-commerce</option>
+                            <option value="consulting">Consulting</option>
+                            <option value="manufacturing">Manufacturing</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Company Size</label>
+                        <div class="option-cards">
+                            <label class="option-card">
+                                <input type="radio" name="companySize" value="solo">
+                                <div class="option-card-content">
+                                    <div class="option-card-icon">👤</div>
+                                    <div class="option-card-label">Solo</div>
+                                </div>
+                            </label>
+                            <label class="option-card">
+                                <input type="radio" name="companySize" value="2-10" checked>
+                                <div class="option-card-content">
+                                    <div class="option-card-icon">👥</div>
+                                    <div class="option-card-label">2-10</div>
+                                </div>
+                            </label>
+                            <label class="option-card">
+                                <input type="radio" name="companySize" value="11-50">
+                                <div class="option-card-content">
+                                    <div class="option-card-icon">🏢</div>
+                                    <div class="option-card-label">11-50</div>
+                                </div>
+                            </label>
+                            <label class="option-card">
+                                <input type="radio" name="companySize" value="50+">
+                                <div class="option-card-content">
+                                    <div class="option-card-icon">🏛️</div>
+                                    <div class="option-card-label">50+</div>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-primary" onclick="nextStep()">
+                            Continue
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 2: ICP -->
+                <div class="step-content" data-step="2">
+                    <h2 class="step-title">Who's your ideal customer?</h2>
+                    <p class="step-description">The more specific, the better our targeting and personalization.</p>
+
+                    <div class="form-group">
+                        <label class="form-label">Target Job Titles <span class="required">*</span></label>
+                        <input type="text" class="form-input" name="targetTitles" placeholder="CEO, Founder, VP of Sales, Head of Marketing" required>
+                        <p class="form-hint">Comma-separated. Who makes the buying decision?</p>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Target Company Size <span class="required">*</span></label>
+                        <select class="form-select" name="targetCompanySize" required>
+                            <option value="">Select target company size</option>
+                            <option value="1-10">1-10 employees (Startups)</option>
+                            <option value="11-50">11-50 employees (Small)</option>
+                            <option value="51-200">51-200 employees (Mid-market)</option>
+                            <option value="201-1000">201-1000 employees (Enterprise)</option>
+                            <option value="1000+">1000+ employees (Large Enterprise)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Target Industries</label>
+                        <input type="text" class="form-input" name="targetIndustries" placeholder="SaaS, Fintech, E-commerce">
+                        <p class="form-hint">Leave blank to target all industries</p>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">What problem do you solve? <span class="required">*</span></label>
+                        <textarea class="form-textarea" name="problemSolved" placeholder="We help B2B companies book more meetings by orchestrating multi-channel outbound campaigns..." required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">What makes you different?</label>
+                        <textarea class="form-textarea" name="uniqueValue" placeholder="Unlike traditional agencies, we use AI to personalize every message..."></textarea>
+                    </div>
+
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-secondary" onclick="prevStep()">Back</button>
+                        <button type="button" class="btn btn-primary" onclick="nextStep()">
+                            Continue
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 3: Email Setup -->
+                <div class="step-content" data-step="3">
+                    <h2 class="step-title">Connect your email</h2>
+                    <p class="step-description">We'll send cold emails from your domain to build your reputation.</p>
+
+                    <div class="info-box">
+                        <div class="info-box-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                        </div>
+                        <div class="info-box-text">
+                            <strong>Why we need this:</strong> Cold emails must come from YOUR domain to build sender reputation and ensure deliverability. We never share or store credentials beyond secure campaign execution.
+                        </div>
+                    </div>
+
+                    <div class="credential-group">
+                        <div class="credential-group-title">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                            SMTP Credentials
+                        </div>
+                        <div class="credential-grid">
+                            <div class="form-group" style="margin-bottom: 0">
+                                <label class="form-label">SMTP Host <span class="required">*</span></label>
+                                <input type="text" class="form-input" name="smtpHost" placeholder="smtp.gmail.com" required>
+                            </div>
+                            <div class="form-group" style="margin-bottom: 0">
+                                <label class="form-label">Port <span class="required">*</span></label>
+                                <input type="text" class="form-input" name="smtpPort" placeholder="587" required>
+                            </div>
+                        </div>
+                        <div class="credential-grid" style="margin-top: 1rem">
+                            <div class="form-group" style="margin-bottom: 0">
+                                <label class="form-label">Email/Username <span class="required">*</span></label>
+                                <input type="email" class="form-input" name="smtpUser" placeholder="outreach@yourcompany.com" required>
+                            </div>
+                            <div class="form-group" style="margin-bottom: 0">
+                                <label class="form-label">Password/App Key <span class="required">*</span></label>
+                                <input type="password" class="form-input" name="smtpPass" placeholder="••••••••••••" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Sender Name</label>
+                        <input type="text" class="form-input" name="senderName" placeholder="John from Acme">
+                        <p class="form-hint">How should emails appear? Default: Your first name</p>
+                    </div>
+
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-secondary" onclick="prevStep()">Back</button>
+                        <button type="button" class="btn btn-primary" onclick="nextStep()">
+                            Continue
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 4: Other Channels -->
+                <div class="step-content" data-step="4">
+                    <h2 class="step-title">Add more channels</h2>
+                    <p class="step-description">Multi-channel gets 3x more replies. Optional but recommended.</p>
+
+                    <div class="credential-group">
+                        <div class="credential-group-title">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                            LinkedIn (Optional)
+                        </div>
+                        <div class="info-box" style="margin-bottom: 1rem;">
+                            <div class="info-box-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                            </div>
+                            <div class="info-box-text">
+                                We'll send connection requests and follow-up DMs to complement email outreach. Typical: +40% more replies.
+                            </div>
+                        </div>
+                        <div class="form-group" style="margin-bottom: 0">
+                            <label class="form-label">LinkedIn Cookie (li_at)</label>
+                            <input type="password" class="form-input" name="linkedinCookie" placeholder="Paste your li_at cookie value">
+                            <p class="form-hint">Get this from browser DevTools → Cookies → linkedin.com → li_at</p>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Preferred Tone</label>
+                        <div class="option-cards">
+                            <label class="option-card">
+                                <input type="radio" name="tone" value="professional" checked>
+                                <div class="option-card-content">
+                                    <div class="option-card-icon">💼</div>
+                                    <div class="option-card-label">Professional</div>
+                                </div>
+                            </label>
+                            <label class="option-card">
+                                <input type="radio" name="tone" value="casual">
+                                <div class="option-card-content">
+                                    <div class="option-card-icon">😊</div>
+                                    <div class="option-card-label">Casual</div>
+                                </div>
+                            </label>
+                            <label class="option-card">
+                                <input type="radio" name="tone" value="direct">
+                                <div class="option-card-content">
+                                    <div class="option-card-icon">🎯</div>
+                                    <div class="option-card-label">Direct</div>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Daily Email Volume</label>
+                        <select class="form-select" name="dailyVolume">
+                            <option value="20">20/day (Conservative - new domain)</option>
+                            <option value="50" selected>50/day (Recommended)</option>
+                            <option value="100">100/day (Aggressive - established domain)</option>
+                        </select>
+                        <p class="form-hint">We'll ramp up gradually to protect deliverability</p>
+                    </div>
+
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-secondary" onclick="prevStep()">Back</button>
+                        <button type="button" class="btn btn-primary" onclick="nextStep()">
+                            Review & Submit
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 5: Confirm -->
+                <div class="step-content" data-step="5">
+                    <h2 class="step-title">Ready to launch?</h2>
+                    <p class="step-description">Review your setup. We'll start prospecting within 48 hours.</p>
+
+                    <div id="reviewSummary" style="background: rgba(255,255,255,0.02); border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem;">
+                        <!-- Populated by JS -->
+                    </div>
+
+                    <div class="info-box">
+                        <div class="info-box-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                        </div>
+                        <div class="info-box-text">
+                            <strong>Our guarantee:</strong> 5 qualified responses in 30 days or your money back. We're aligned with your success.
+                        </div>
+                    </div>
+
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-secondary" onclick="prevStep()">Back</button>
+                        <button type="submit" class="btn btn-primary">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                            Launch My Campaigns
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Success State -->
+                <div class="step-content" data-step="success">
+                    <div class="success-content">
+                        <div class="success-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        </div>
+                        <h2 class="success-title">You're all set!</h2>
+                        <p class="success-description">We've received your information and will start building your campaign immediately.</p>
+                        
+                        <div class="next-steps">
+                            <div class="next-steps-title">What happens next:</div>
+                            <div class="next-step-item">
+                                <div class="next-step-number">1</div>
+                                <div>We research and build your prospect list (24-48 hours)</div>
+                            </div>
+                            <div class="next-step-item">
+                                <div class="next-step-number">2</div>
+                                <div>We craft personalized sequences and send you for approval</div>
+                            </div>
+                            <div class="next-step-item">
+                                <div class="next-step-number">3</div>
+                                <div>Campaigns go live — you'll get weekly reports + real-time alerts on hot leads</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <!-- Security Badge -->
+        <div class="security-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+            Your data is encrypted and never shared
+        </div>
+    </div>
+
+    <script>
+        let currentStep = 1;
+        const totalSteps = 5;
+
+        function updateProgress() {
+            // Update progress line
+            const progressLine = document.getElementById('progressLine');
+            const progress = ((currentStep - 1) / (totalSteps - 1)) * 100;
+            progressLine.style.width = `${progress}%`;
+
+            // Update step indicators
+            document.querySelectorAll('.step-indicator').forEach((indicator, index) => {
+                const step = index + 1;
+                indicator.classList.remove('active', 'completed');
+                if (step < currentStep) {
+                    indicator.classList.add('completed');
+                } else if (step === currentStep) {
+                    indicator.classList.add('active');
+                }
+            });
+
+            // Update step labels
+            document.querySelectorAll('.step-label').forEach((label, index) => {
+                const step = index + 1;
+                label.classList.toggle('active', step === currentStep);
+            });
+
+            // Update content visibility
+            document.querySelectorAll('.step-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            const currentContent = document.querySelector(`.step-content[data-step="${currentStep}"]`);
+            if (currentContent) {
+                currentContent.classList.add('active');
+            }
+        }
+
+        function nextStep() {
+            if (currentStep < totalSteps) {
+                // Validate current step
+                const currentContent = document.querySelector(`.step-content[data-step="${currentStep}"]`);
+                const requiredFields = currentContent.querySelectorAll('[required]');
+                let valid = true;
+                
+                requiredFields.forEach(field => {
+                    if (!field.value.trim()) {
+                        field.style.borderColor = 'var(--error)';
+                        valid = false;
+                    } else {
+                        field.style.borderColor = '';
+                    }
+                });
+
+                if (!valid) {
+                    return;
+                }
+
+                currentStep++;
+                
+                // If going to review step, populate summary
+                if (currentStep === 5) {
+                    populateReview();
+                }
+                
+                updateProgress();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+        function prevStep() {
+            if (currentStep > 1) {
+                currentStep--;
+                updateProgress();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+        function populateReview() {
+            const form = document.getElementById('onboardingForm');
+            const formData = new FormData(form);
+            
+            const summary = document.getElementById('reviewSummary');
+            summary.innerHTML = `
+                <div style="margin-bottom: 1rem;">
+                    <div style="color: var(--text-muted); font-size: 0.75rem; text-transform: uppercase; margin-bottom: 0.25rem;">Company</div>
+                    <div style="font-weight: 500;">${formData.get('companyName') || 'Not provided'}</div>
+                </div>
+                <div style="margin-bottom: 1rem;">
+                    <div style="color: var(--text-muted); font-size: 0.75rem; text-transform: uppercase; margin-bottom: 0.25rem;">Target</div>
+                    <div style="font-weight: 500;">${formData.get('targetTitles') || 'Not provided'} at ${formData.get('targetCompanySize') || 'any size'} companies</div>
+                </div>
+                <div style="margin-bottom: 1rem;">
+                    <div style="color: var(--text-muted); font-size: 0.75rem; text-transform: uppercase; margin-bottom: 0.25rem;">Email</div>
+                    <div style="font-weight: 500;">${formData.get('smtpUser') || 'Not provided'}</div>
+                </div>
+                <div style="margin-bottom: 1rem;">
+                    <div style="color: var(--text-muted); font-size: 0.75rem; text-transform: uppercase; margin-bottom: 0.25rem;">Channels</div>
+                    <div style="font-weight: 500;">Email${formData.get('linkedinCookie') ? ' + LinkedIn' : ''}</div>
+                </div>
+                <div>
+                    <div style="color: var(--text-muted); font-size: 0.75rem; text-transform: uppercase; margin-bottom: 0.25rem;">Volume</div>
+                    <div style="font-weight: 500;">${formData.get('dailyVolume') || '50'} emails/day • ${formData.get('tone') || 'Professional'} tone</div>
+                </div>
+            `;
+        }
+
+        // Form submission
+        document.getElementById('onboardingForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData.entries());
+            
+            // Show loading state
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="animate-spin"><circle cx="12" cy="12" r="10" stroke-opacity="0.25"></circle><path d="M12 2a10 10 0 0 1 10 10" stroke-opacity="1"></path></svg> Submitting...';
+            submitBtn.disabled = true;
+
+            try {
+                // Submit to Formspree (free tier)
+                const response = await fetch('https://formspree.io/f/xyzygdwl', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        ...data,
+                        _subject: `🏛️ New Caesar's Legions Client: ${data.companyName}`,
+                        _replyto: data.smtpUser
+                    })
+                });
+                
+                if (!response.ok) throw new Error('Submission failed');
+                
+                // Show success
+                currentStep = 'success';
+                document.querySelectorAll('.step-content').forEach(content => {
+                    content.classList.remove('active');
+                });
+                document.querySelector('.step-content[data-step="success"]').classList.add('active');
+                
+                // Hide progress
+                document.querySelector('.progress-container').style.display = 'none';
+                
+            } catch (error) {
+                console.error('Submission error:', error);
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+                alert('Something went wrong. Please try again.');
+            }
+        });
+
+        // Initialize
+        updateProgress();
+    </script>
+</body>
+</html>
