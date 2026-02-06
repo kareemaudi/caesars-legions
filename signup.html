@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Join Caesar's Legions — Founding Member Access</title>
-  <meta name="description" content="Claim your founding member spot. $497/mo locked forever. AI-powered cold email that books meetings.">
+  <meta name="description" content="Claim your beta spot. $297/mo locked forever. AI-powered cold email that books meetings.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -390,7 +390,7 @@
       <div class="logo">🏛️ Caesar's Legions</div>
       
       <h1>Your AI Outreach Army Awaits</h1>
-      <p>Join the first 20 founding members and lock in $497/mo forever. Regular price will be $997/mo.</p>
+      <p>Join the first 10 beta users and lock in $297/mo forever. Regular price will be $497/mo.</p>
       
       <ul class="benefits">
         <li>
@@ -431,10 +431,10 @@
       <div class="pricing-card">
         <span class="badge">🔥 Founding Member</span>
         <div class="price-row">
-          <span class="price">$497</span>
+          <span class="price">$297</span>
           <span class="period">/month</span>
         </div>
-        <p class="price-note"><s>$997/mo</s> Lock in 50% off forever</p>
+        <p class="price-note"><s>$497/mo</s> Beta pricing — 40% off forever</p>
         
         <div class="features-mini">
           <div><span class="check">✓</span> 100 emails/week</div>
@@ -490,7 +490,7 @@
           </div>
           
           <button type="submit" class="btn" id="submit-btn">
-            Get Started — $497/mo
+            Get Started — $297/mo
           </button>
           
           <div class="guarantee">
@@ -527,23 +527,24 @@
       };
 
       try {
-        const response = await fetch('/api/signup', {
+        // Save lead info to localStorage for follow-up
+        localStorage.setItem('caesar_lead', JSON.stringify({
+          ...formData,
+          timestamp: new Date().toISOString()
+        }));
+        
+        // Also send to backend for tracking (fire and forget)
+        fetch('https://natural-energy-production-df04.up.railway.app/api/leads', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(formData)
-        });
-
-        const result = await response.json();
-
-        if (result.success && result.checkoutUrl) {
-          window.location.href = result.checkoutUrl;
-        } else {
-          throw new Error(result.error || 'Signup failed');
-        }
+        }).catch(() => {}); // Don't block on this
+        
+        // Redirect to MontyPay
+        window.location.href = 'http://mm-apis.montypay.com/core/api/admin/v1/PaymentLink/redirect-payment-link?paymentIdentifier=H8PIRMEG';
       } catch (error) {
-        alert('Error: ' + error.message);
-        btn.disabled = false;
-        btn.textContent = 'Get Started — $497/mo';
+        // If anything fails, still redirect to payment
+        window.location.href = 'http://mm-apis.montypay.com/core/api/admin/v1/PaymentLink/redirect-payment-link?paymentIdentifier=H8PIRMEG';
       }
     });
 
