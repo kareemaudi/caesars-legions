@@ -1196,7 +1196,7 @@
         
         document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
         
-        // Form submission
+        // Form submission - redirect to full onboarding
         async function handleSubmit(e) {
             e.preventDefault();
             const btn = document.getElementById('submit-btn');
@@ -1211,6 +1211,7 @@
                 website: form.website.value
             };
             
+            // Save lead data for tracking
             try {
                 await fetch('https://natural-energy-production-df04.up.railway.app/api/leads', {
                     method: 'POST',
@@ -1219,7 +1220,16 @@
                 });
             } catch (err) {}
             
-            window.location.href = 'http://mm-apis.montypay.com/core/api/admin/v1/PaymentLink/redirect-payment-link?paymentIdentifier=H8PIRMEG';
+            // Store in localStorage for onboarding pre-fill
+            localStorage.setItem('caesarLead', JSON.stringify(data));
+            
+            // Redirect to full onboarding flow
+            const params = new URLSearchParams({
+                email: data.email,
+                name: data.name,
+                website: data.website
+            });
+            window.location.href = `onboarding.html?${params.toString()}`;
         }
         
         // Smooth scroll
