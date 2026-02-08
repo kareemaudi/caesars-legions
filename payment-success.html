@@ -1,110 +1,224 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Payment Successful - Caesar's Legions</title>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background: #0a0a0a;
-      color: #e0e0e0;
-      padding: 40px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-    }
-    .container {
-      max-width: 600px;
-      text-align: center;
-    }
-    .icon {
-      font-size: 80px;
-      margin-bottom: 20px;
-    }
-    h1 {
-      color: #4ade80;
-      font-size: 36px;
-      margin-bottom: 16px;
-    }
-    p {
-      color: #888;
-      font-size: 18px;
-      margin-bottom: 32px;
-      line-height: 1.6;
-    }
-    .next-steps {
-      background: #1a1a1a;
-      border: 1px solid #333;
-      border-radius: 12px;
-      padding: 32px;
-      margin: 32px 0;
-      text-align: left;
-    }
-    .next-steps h2 {
-      color: #fff;
-      font-size: 20px;
-      margin-bottom: 20px;
-    }
-    .step {
-      padding: 12px 0;
-      display: flex;
-      align-items: center;
-      color: #e0e0e0;
-    }
-    .step:before {
-      content: "✓";
-      color: #4ade80;
-      font-weight: bold;
-      margin-right: 12px;
-      font-size: 20px;
-    }
-    .button {
-      display: inline-block;
-      background: #4ade80;
-      color: #0a0a0a;
-      padding: 16px 32px;
-      border-radius: 8px;
-      font-size: 18px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: background 0.2s;
-    }
-    .button:hover {
-      background: #22c55e;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Successful — Caesar's Legions</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #D4AF37;
+            --bg-primary: #0A0A0F;
+            --bg-card: rgba(255, 255, 255, 0.03);
+            --border: rgba(255, 255, 255, 0.08);
+            --text-primary: #FFFFFF;
+            --text-secondary: #A0A0B0;
+            --success: #22C55E;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(34, 197, 94, 0.15), transparent);
+            pointer-events: none;
+        }
+        
+        .container {
+            max-width: 500px;
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+        }
+        
+        .success-icon {
+            width: 100px;
+            height: 100px;
+            background: rgba(34, 197, 94, 0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            animation: pop 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+        
+        @keyframes pop {
+            0% { transform: scale(0); }
+            100% { transform: scale(1); }
+        }
+        
+        .success-icon svg {
+            width: 50px;
+            height: 50px;
+            color: var(--success);
+        }
+        
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+        
+        .next-steps {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: left;
+            margin-bottom: 2rem;
+        }
+        
+        .next-steps h3 {
+            color: var(--gold);
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+        }
+        
+        .step {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .step:last-child {
+            margin-bottom: 0;
+        }
+        
+        .step-number {
+            width: 28px;
+            height: 28px;
+            background: var(--gold);
+            color: var(--bg-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.875rem;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+        
+        .step-text {
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            background: var(--gold);
+            color: var(--bg-primary);
+            border: none;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 40px rgba(212, 175, 55, 0.3);
+        }
+        
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            animation: fall 3s linear forwards;
+        }
+        
+        @keyframes fall {
+            0% { transform: translateY(-100vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
-    <div class="icon">🎉</div>
-    <h1>Payment Successful!</h1>
-    <p>Welcome to Caesar's Legions. Your subscription is now active.</p>
-
-    <div class="next-steps">
-      <h2>What happens next?</h2>
-      <div class="step">We'll email you within 24 hours to schedule onboarding</div>
-      <div class="step">Set up your first campaign together</div>
-      <div class="step">Connect your email account</div>
-      <div class="step">Launch your first 100 personalized emails</div>
+    <div class="container">
+        <div class="success-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+        </div>
+        
+        <h1>Payment Successful! 🎉</h1>
+        <p class="subtitle">Welcome to Caesar's Legions. Your multi-channel outbound machine is being activated.</p>
+        
+        <div class="next-steps">
+            <h3>What happens now</h3>
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-text">We're researching prospects that match your ICP (24-48 hours)</div>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-text">We'll draft personalized email sequences and send for your approval</div>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-text">Once approved, campaigns go live — expect first replies within days</div>
+            </div>
+        </div>
+        
+        <a href="https://natural-energy-production-df04.up.railway.app/dashboard" class="btn" id="dashboardBtn">
+            View Your Dashboard
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </a>
     </div>
-
-    <a href="/" class="button">Go to Dashboard</a>
-
-    <p style="margin-top: 32px; font-size: 14px;">
-      Questions? Email us at <strong>kareem@cmonkeytribe.com</strong>
-    </p>
-  </div>
-
-  <script>
-    // Extract session_id and log it (optional)
-    const urlParams = new URLSearchParams(window.location.search);
-    const sessionId = urlParams.get('session_id');
-    if (sessionId) {
-      console.log('Checkout session:', sessionId);
-    }
-  </script>
+    
+    <script>
+        // Add confetti
+        function createConfetti() {
+            const colors = ['#D4AF37', '#22C55E', '#3B82F6', '#F59E0B', '#EC4899'];
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    confetti.style.left = Math.random() * 100 + 'vw';
+                    confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.animationDelay = Math.random() * 2 + 's';
+                    document.body.appendChild(confetti);
+                    
+                    setTimeout(() => confetti.remove(), 3000);
+                }, i * 50);
+            }
+        }
+        
+        // Get email from localStorage and add to dashboard link
+        const email = localStorage.getItem('caesarEmail');
+        if (email) {
+            const dashboardBtn = document.getElementById('dashboardBtn');
+            dashboardBtn.href += `?email=${encodeURIComponent(email)}`;
+        }
+        
+        createConfetti();
+    </script>
 </body>
 </html>

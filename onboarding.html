@@ -1021,7 +1021,10 @@
                     })
                 }).catch(() => {}); // Don't block on API errors
                 
-                // Redirect to MontyPay payment
+                // Store email for dashboard access later
+                localStorage.setItem('caesarEmail', data.smtpUser);
+                
+                // Redirect to MontyPay payment (webhook will trigger campaign kickoff)
                 window.location.href = 'http://mm-apis.montypay.com/core/api/admin/v1/PaymentLink/redirect-payment-link?paymentIdentifier=H8PIRMEG';
                 
             } catch (error) {
