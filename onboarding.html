@@ -1038,27 +1038,16 @@
         // Initialize
         updateProgress();
         
-        // Pre-fill from URL params or localStorage
+        // Pre-fill email from URL params or localStorage
         function prefillForm() {
             const params = new URLSearchParams(window.location.search);
-            const stored = JSON.parse(localStorage.getItem('caesarLead') || '{}');
+            const storedEmail = localStorage.getItem('caesarEmail');
+            const email = params.get('email') || storedEmail || '';
             
-            // Pre-fill company name from name param
-            const nameField = document.querySelector('input[name="companyName"]');
-            if (nameField && (params.get('name') || stored.name)) {
-                nameField.value = params.get('name') || stored.name || '';
-            }
-            
-            // Pre-fill website
-            const websiteField = document.querySelector('input[name="website"]');
-            if (websiteField && (params.get('website') || stored.website)) {
-                websiteField.value = params.get('website') || stored.website || '';
-            }
-            
-            // Pre-fill SMTP user (email)
+            // Pre-fill SMTP user (sending email)
             const emailField = document.querySelector('input[name="smtpUser"]');
-            if (emailField && (params.get('email') || stored.email)) {
-                emailField.value = params.get('email') || stored.email || '';
+            if (emailField && email) {
+                emailField.value = email;
             }
         }
         
