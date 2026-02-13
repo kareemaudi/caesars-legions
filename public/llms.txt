@@ -1,0 +1,29 @@
+# Mubyn OS — AI Business Operating System
+# https://app.mubyn.com
+
+## What is Mubyn?
+Mubyn is an AI-powered business operating system for SMEs in the MENA region. Think "Palantir for SMEs." One dashboard replaces 5-6 SaaS tools with AI agents that actually run your business.
+
+## Core Features
+- **Caesar AI (COO)** — Your AI chief operating officer. Bilingual (Arabic/English). Learns your business and manages operations.
+- **Lead Generation** — AI discovers potential customers, scores leads, drafts personalized cold emails, sends via your SMTP.
+- **CMO Analytics** — Marketing intelligence dashboard. Connects to Shopify, Meta Ads, Google Ads. Content calendar with AI-generated posts and images.
+- **CFO Intelligence** — Financial tracking, KPIs, 6-month projections, AI insights, transaction management.
+- **Customer Support Agent** — AI-powered CS across 5 channels: website widget, email (IMAP/SMTP), Telegram, WhatsApp Business, live chat. Knowledge base for training.
+- **Website Builder** — AI generates complete, professional websites in 60 seconds. Arabic RTL support. Edit with natural language.
+- **Integrations** — Shopify, Meta Ads, Google Ads with more coming.
+
+## Target Market
+Small and medium enterprises (SMEs) in the Middle East and North Africa (MENA). Arabic-first, bilingual platform.
+
+## Pricing
+Starting at $99/month per business. Free trial available.
+
+## Links
+- Landing page: https://mubyn.com
+- Dashboard: https://app.mubyn.com
+- Sign up: https://app.mubyn.com/signup
+
+## Contact
+- Email: support@mubyn.com
+- WhatsApp: Available on mubyn.com

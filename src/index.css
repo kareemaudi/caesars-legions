@@ -1,0 +1,98 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-brand-dark text-brand-text;
+    font-family: 'Inter', 'IBM Plex Sans Arabic', sans-serif;
+  }
+
+  /* Typography refinement */
+  h1, h2, h3 {
+    @apply font-bold;
+  }
+  h1 { @apply text-2xl; }
+  h2 { @apply text-xl; }
+  h3 { @apply text-lg; }
+}
+
+/* ─── Page fade-in animation ─── */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 300ms ease-out both;
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .animate-fadeIn,
+  .animate-pulse {
+    animation: none !important;
+  }
+  * {
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ─── RTL support ─── */
+[dir="rtl"] body {
+  font-family: 'IBM Plex Sans Arabic', 'Inter', sans-serif;
+}
+
+[dir="rtl"] .text-left {
+  text-align: right;
+}
+
+[dir="rtl"] .text-right {
+  text-align: left;
+}
+
+/* ─── Scrollbar styling ─── */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-brand-darker;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-brand-border rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-brand-gold/30;
+}
+
+/* ─── Typing indicator ─── */
+@keyframes typing-dot {
+  0%, 60%, 100% {
+    opacity: 0.3;
+  }
+  30% {
+    opacity: 1;
+  }
+}
+
+.typing-indicator span {
+  animation: typing-dot 1.4s infinite;
+}
+
+.typing-indicator span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.typing-indicator span:nth-child(3) {
+  animation-delay: 0.4s;
+}
